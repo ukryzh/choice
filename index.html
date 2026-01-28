@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Case Landing</title>
+  <style>
+    :root {
+      --main-color: #FF5F81;
+      --bg-color: #ffffff;
+      --text-color: #222;
+      --muted: #666;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      z-index: 1000;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px;
+    }
+
+    nav .logo {
+      font-weight: bold;
+      color: var(--main-color);
+      font-size: 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li {
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    nav ul li:hover {
+      color: var(--main-color);
+    }
+
+    section {
+      display: none;
+      max-width: 1200px;
+      margin: auto;
+      padding: 60px 16px;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h1, h2 {
+      margin-bottom: 16px;
+    }
+
+    .accent {
+      color: var(--main-color);
+    }
+
+    /* Docs layout */
+    .docs-container {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+    }
+
+    .docs-menu {
+      border-right: 1px solid #eee;
+      padding-right: 16px;
+    }
+
+    .docs-menu ul {
+      list-style: none;
+    }
+
+    .docs-menu li {
+      padding: 10px 0;
+      cursor: pointer;
+      color: var(--muted);
+    }
+
+    .docs-menu li:hover,
+    .docs-menu li.active {
+      color: var(--main-color);
+      font-weight: bold;
+    }
+
+    .docs-content {
+      padding-left: 16px;
+    }
+
+    footer {
+      background: #fafafa;
+      border-top: 1px solid #eee;
+      padding: 40px 16px;
+      margin-top: 60px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    footer a {
+      color: var(--main-color);
+      text-decoration: none;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .docs-container {
+        grid-template-columns: 1fr;
+      }
+
+      .docs-menu {
+        border-right: none;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">My App Case</div>
+    <ul>
+      <li onclick="showSection('choice')">choice</li>
+      <li onclick="showSection('case')">case</li>
+      <li onclick="showSection('docs')">docs</li>
+      <li onclick="showSection('code')">code</li>
+    </ul>
+  </nav>
+</header>
+
+<section id="choice" class="active">
+  <h1>Приложение <span class="accent">— краткий обзор</span></h1>
+  <p class="muted">Описание идеи, ценности и основных фич приложения.</p>
+  <br />
+  <p>Здесь можно разместить:</p>
+  <ul class="muted">
+    <li>• ссылки на демо</li>
+    <li>• скриншоты приложения</li>
+    <li>• короткое видео</li>
+  </ul>
+</section>
+
+<section id="case">
+  <h1>Case study</h1>
+  <p class="muted">Подробная статья о процессе разработки продукта.</p>
+  <br />
+  <p>Здесь будет текст кейса, изображения, диаграммы и выводы.</p>
+</section>
+
+<section id="docs">
+  <h1>Documentation</h1>
+  <div class="docs-container">
+    <aside class="docs-menu">
+      <ul>
+        <li class="active" onclick="showDoc('marketing')">Marketing research document</li>
+        <li onclick="showDoc('scope')">Scope & Vision</li>
+        <li onclick="showDoc('prd')">Product requirement document</li>
+        <li onclick="showDoc('brd')">Business requirements document</li>
+        <li onclick="showDoc('regulatory')">Regulatory compliance analysis</li>
+        <li onclick="showDoc('srs')">Software requirements specification</li>
+        <li onclick="showDoc('erd')">Entity relationship documentation</li>
+      </ul>
+    </aside>
+    <div class="docs-content" id="docsContent">
+      <h2>Marketing research document</h2>
+      <p class="muted">Описание маркетингового исследования, графики, изображения.</p>
+    </div>
+  </div>
+</section>
+
+<section id="code">
+  <h1>Source code</h1>
+  <p>Репозиторий проекта:</p>
+  <a href="https://github.com/your-repo" target="_blank">GitHub Repository</a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h3>Контакты</h3>
+      <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
+    </div>
+    <div>
+      <h3>Скачать</h3>
+      <p><a href="#">APK</a></p>
+      <p><a href="#">Google Play Store</a></p>
+    </div>
+    <div>
+      <h3>Соцсети</h3>
+      <p><a href="#">LinkedIn</a></p>
+      <p><a href="#">Telegram</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+  function showDoc(doc) {
+    const titles = {
+      marketing: 'Marketing research document',
+      scope: 'Scope & Vision',
+      prd: 'Product requirement document',
+      brd: 'Business requirements document',
+      regulatory: 'Regulatory compliance analysis',
+      srs: 'Software requirements specification',
+      erd: 'Entity relationship documentation'
+    };
+
+    document.querySelectorAll('.docs-menu li').forEach(li => li.classList.remove('active'));
+    event.target.classList.add('active');
+
+    document.getElementById('docsContent').innerHTML = `
+      <h2>${titles[doc]}</h2>
+      <p class="muted">Контент документа, текст, изображения, схемы.</p>
+    `;
+  }
+</script>
+
+</body>
+</html>
