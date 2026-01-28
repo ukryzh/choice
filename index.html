@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>App Case Landing</title>
+
   <style>
     :root {
       --main-color: #FF5F81;
@@ -19,12 +20,28 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    html, body {
+      height: 100%;
+    }
+
     body {
       background: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
     }
 
+    /* ===== Layout ===== */
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main.content {
+      flex: 1;
+    }
+
+    /* ===== Header ===== */
     header {
       position: sticky;
       top: 0;
@@ -63,6 +80,7 @@
       color: var(--main-color);
     }
 
+    /* ===== Sections ===== */
     section {
       display: none;
       max-width: 1200px;
@@ -74,7 +92,7 @@
       display: block;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       margin-bottom: 16px;
     }
 
@@ -82,7 +100,11 @@
       color: var(--main-color);
     }
 
-    /* Docs layout */
+    .muted {
+      color: var(--muted);
+    }
+
+    /* ===== Docs ===== */
     .docs-container {
       display: grid;
       grid-template-columns: 280px 1fr;
@@ -114,11 +136,11 @@
       padding-left: 16px;
     }
 
+    /* ===== Footer ===== */
     footer {
       background: #fafafa;
       border-top: 1px solid #eee;
       padding: 40px 16px;
-      margin-top: 60px;
     }
 
     .footer-inner {
@@ -134,10 +156,7 @@
       text-decoration: none;
     }
 
-    .muted {
-      color: var(--muted);
-    }
-
+    /* ===== Responsive ===== */
     @media (max-width: 768px) {
       .docs-container {
         grid-template-columns: 1fr;
@@ -153,90 +172,97 @@
 </head>
 <body>
 
-<header>
-  <nav>
-    <div class="logo">My App Case</div>
-    <ul>
-      <li onclick="showSection('choice')">choice</li>
-      <li onclick="showSection('case')">case</li>
-      <li onclick="showSection('docs')">docs</li>
-      <li onclick="showSection('code')">code</li>
-    </ul>
-  </nav>
-</header>
+<div class="page">
 
-<section id="choice" class="active">
-  <h1>Приложение <span class="accent">— краткий обзор</span></h1>
-  <p class="muted">Описание идеи, ценности и основных фич приложения.</p>
-  <br />
-  <p>Здесь можно разместить:</p>
-  <ul class="muted">
-    <li>• ссылки на демо</li>
-    <li>• скриншоты приложения</li>
-    <li>• короткое видео</li>
-  </ul>
-</section>
-
-<section id="case">
-  <h1>Case study</h1>
-  <p class="muted">Подробная статья о процессе разработки продукта.</p>
-  <br />
-  <p>Здесь будет текст кейса, изображения, диаграммы и выводы.</p>
-</section>
-
-<section id="docs">
-  <h1>Documentation</h1>
-  <div class="docs-container">
-    <aside class="docs-menu">
+  <header>
+    <nav>
+      <div class="logo">My App Case</div>
       <ul>
-        <li class="active" onclick="showDoc('marketing')">Marketing research document</li>
-        <li onclick="showDoc('scope')">Scope & Vision</li>
-        <li onclick="showDoc('prd')">Product requirement document</li>
-        <li onclick="showDoc('brd')">Business requirements document</li>
-        <li onclick="showDoc('regulatory')">Regulatory compliance analysis</li>
-        <li onclick="showDoc('srs')">Software requirements specification</li>
-        <li onclick="showDoc('erd')">Entity relationship documentation</li>
+        <li onclick="showSection('choice')">choice</li>
+        <li onclick="showSection('case')">case</li>
+        <li onclick="showSection('docs')">docs</li>
+        <li onclick="showSection('code')">code</li>
       </ul>
-    </aside>
-    <div class="docs-content" id="docsContent">
-      <h2>Marketing research document</h2>
-      <p class="muted">Описание маркетингового исследования, графики, изображения.</p>
-    </div>
-  </div>
-</section>
+    </nav>
+  </header>
 
-<section id="code">
-  <h1>Source code</h1>
-  <p>Репозиторий проекта:</p>
-  <a href="https://github.com/your-repo" target="_blank">GitHub Repository</a>
-</section>
+  <main class="content">
 
-<footer>
-  <div class="footer-inner">
-    <div>
-      <h3>Контакты</h3>
-      <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
+    <section id="choice" class="active">
+      <h1>Приложение <span class="accent">— краткий обзор</span></h1>
+      <p class="muted">Описание идеи, ценности и основных фич приложения.</p>
+      <br />
+      <ul class="muted">
+        <li>• ссылки на демо</li>
+        <li>• скриншоты приложения</li>
+        <li>• видео</li>
+      </ul>
+    </section>
+
+    <section id="case">
+      <h1>Case study</h1>
+      <p class="muted">Подробное описание процесса разработки продукта.</p>
+    </section>
+
+    <section id="docs">
+      <h1>Documentation</h1>
+      <div class="docs-container">
+        <aside class="docs-menu">
+          <ul>
+            <li class="active" onclick="showDoc(event, 'marketing')">Marketing research document</li>
+            <li onclick="showDoc(event, 'scope')">Scope & Vision</li>
+            <li onclick="showDoc(event, 'prd')">Product requirement document</li>
+            <li onclick="showDoc(event, 'brd')">Business requirements document</li>
+            <li onclick="showDoc(event, 'regulatory')">Regulatory compliance analysis</li>
+            <li onclick="showDoc(event, 'srs')">Software requirements specification</li>
+            <li onclick="showDoc(event, 'erd')">Entity relationship documentation</li>
+          </ul>
+        </aside>
+
+        <div class="docs-content" id="docsContent">
+          <h2>Marketing research document</h2>
+          <p class="muted">Контент документа, изображения, диаграммы.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="code">
+      <h1>Source code</h1>
+      <p>
+        <a href="https://github.com/your-repo" target="_blank">GitHub Repository</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <h3>Контакты</h3>
+        <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
+      </div>
+      <div>
+        <h3>Скачать</h3>
+        <p><a href="#">APK</a></p>
+        <p><a href="#">Google Play Store</a></p>
+      </div>
+      <div>
+        <h3>Соцсети</h3>
+        <p><a href="#">LinkedIn</a></p>
+        <p><a href="#">Telegram</a></p>
+      </div>
     </div>
-    <div>
-      <h3>Скачать</h3>
-      <p><a href="#">APK</a></p>
-      <p><a href="#">Google Play Store</a></p>
-    </div>
-    <div>
-      <h3>Соцсети</h3>
-      <p><a href="#">LinkedIn</a></p>
-      <p><a href="#">Telegram</a></p>
-    </div>
-  </div>
-</footer>
+  </footer>
+
+</div>
 
 <script>
   function showSection(id) {
-    document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
   }
 
-  function showDoc(doc) {
+  function showDoc(event, doc) {
     const titles = {
       marketing: 'Marketing research document',
       scope: 'Scope & Vision',
@@ -252,7 +278,7 @@
 
     document.getElementById('docsContent').innerHTML = `
       <h2>${titles[doc]}</h2>
-      <p class="muted">Контент документа, текст, изображения, схемы.</p>
+      <p class="muted">Контент документа, изображения, схемы.</p>
     `;
   }
 </script>
