@@ -1,1 +1,270 @@
+<h2>Scope & Vision Document</h2>
+
+<h3>1. Vision</h3>
+
+<h4>1.1 Background</h4>
+<p>
+Women are forced to use menstrual cycle tracking applications that sell or share
+their personal data due to the lack of privacy-respecting alternatives.
+</p>
+<p>
+With the rapid development of AI assistants, individual users are now able to
+build applications independently, making it possible to create software that
+does not monetize or exploit user data.
+</p>
+
+<h4>1.2 Vision Statement</h4>
+<blockquote>
+For women who track their menstrual cycle, I am building a mobile application
+that addresses the problem of personal data protection and user control,
+unlike existing competitors on the market.
+</blockquote>
+
+<h4>1.3 MVP Goals</h4>
+<ul>
+  <li>
+    <strong>Business goal:</strong> provide users with a secure and privacy-first
+    alternative for menstrual cycle tracking
+  </li>
+  <li>
+    <strong>Success metric:</strong> a fully functional application developed
+    independently and published on Google Play
+  </li>
+</ul>
+
+<h4>1.4 Target Audience</h4>
+<ul>
+  <li>Women before menopause</li>
+  <li>Non-pregnant women</li>
+</ul>
+
+<h4>1.5 Value Proposition</h4>
+<ul>
+  <li>
+    <strong>Core value:</strong> the ability to track the menstrual cycle while
+    maintaining data security, full user control, and data portability
+  </li>
+  <li>
+    <strong>Unique Selling Proposition (USP):</strong> strict privacy and data
+    protection by design
+  </li>
+</ul>
+
+<hr />
+
+<h3>2. Scope</h3>
+
+<h4>2.1 In Scope</h4>
+
+<h5>Core Features</h5>
+<ul>
+  <li>Log the start and end dates of the menstrual cycle</li>
+  <li>View historical cycle records</li>
+  <li>View predicted dates for upcoming cycles</li>
+  <li>Track and record symptoms for specific cycle days</li>
+  <li>Export and save personal data from the application</li>
+  <li>Create encrypted cloud backups without exposing personal data</li>
+  <li>End-to-end encryption for cloud backups (user-initiated)</li>
+  <li>Synchronize data across user devices</li>
+</ul>
+
+<h5>Platforms</h5>
+<ul>
+  <li>Mobile (initially Android)</li>
+</ul>
+
+<h4>2.2 Out of Scope</h4>
+
+<h5>Explicitly Excluded</h5>
+<ul>
+  <li>Any monetization functionality</li>
+  <li>Server-side analysis of user data</li>
+  <li>Use of user data for advertising or research purposes</li>
+  <li>Sharing data with third parties</li>
+</ul>
+
+<h5>Post-MVP Ideas</h5>
+<ul>
+  <li>Tracking additional medical conditions (e.g. ovulation)</li>
+</ul>
+
+<h4>2.3 Assumptions</h4>
+<ul>
+  <li>Users value data privacy and do not want their data sold</li>
+  <li>Modern AI assistants enable individuals to build applications independently</li>
+  <li>
+    Users are willing to trust cloud storage if strong, transparent encryption
+    is applied
+  </li>
+  <li>Users understand the value of data backups</li>
+</ul>
+
+<h4>2.4 Constraints</h4>
+<ul>
+  <li><strong>Time:</strong> no fixed deadlines</li>
+  <li><strong>Budget:</strong> free-tier services only</li>
+  <li><strong>Resources:</strong> personal time only</li>
+  <li><strong>Regulatory:</strong> GDPR, HIPAA</li>
+  <li>
+    <strong>Technical:</strong> requirement for secure server infrastructure
+  </li>
+</ul>
+
+<hr />
+
+<h3>3. High-Level Requirements</h3>
+
+<h4>3.1 Functional Requirements</h4>
+<ul>
+  <li>Users can use the application without registration</li>
+  <li>No personal data is shared with third parties</li>
+  <li>Manual input of cycle start and end dates</li>
+  <li>Cycle history displayed in calendar format</li>
+  <li>Cycle predictions based on user input</li>
+  <li>Symptom tracking for specific days</li>
+  <li>Editing and deleting any previously entered data</li>
+  <li>All data stored locally on the user’s device</li>
+  <li>Optional encrypted cloud backup</li>
+  <li>Ability to restore data on a new device</li>
+  <li>Server has no access to decrypted user data</li>
+  <li>Encryption keys are stored only by the user</li>
+</ul>
+
+<h4>3.2 Non-Functional Requirements</h4>
+
+<h5>Performance</h5>
+<p>
+All user actions (save, view, navigation) must complete within ≤ 1 second.
+</p>
+
+<h5>Security</h5>
+<ul>
+  <li>All data belongs exclusively to the user</li>
+  <li>No third-party data sharing</li>
+  <li>Client-side encryption for all sensitive data</li>
+</ul>
+
+<h5>UX / Accessibility</h5>
+<ul>
+  <li>Intuitive interface without onboarding</li>
+  <li>Readable fonts and sufficient contrast</li>
+</ul>
+
+<h5>Reliability</h5>
+<ul>
+  <li>No data loss when switching devices</li>
+  <li>Backups do not interfere with core functionality</li>
+</ul>
+
+<hr />
+
+<h3>4. Success Criteria</h3>
+
+<h4>Launch Success</h4>
+<ul>
+  <li>Application published on Google Play</li>
+  <li>No moderation issues related to personal data handling</li>
+</ul>
+
+<h4>Quality Metrics</h4>
+<ul>
+  <li>Stable application launch on supported devices</li>
+  <li>All core user scenarios work without errors</li>
+  <li>User data persists across sessions</li>
+  <li>No data leaks or third-party trackers</li>
+</ul>
+
+<h4>Acceptance Criteria</h4>
+<ul>
+  <li>Users can start using the app without registration</li>
+  <li>Users can add cycles, view history, see predictions, and log symptoms</li>
+  <li>Users can delete all their data</li>
+  <li>No ads or analytics trackers are present</li>
+  <li>Server receives only encrypted data for backup purposes</li>
+  <li>Users can migrate data to a new device</li>
+  <li>Encrypted data remains unreadable if the server is compromised</li>
+  <li>Users can delete cloud backups at any time</li>
+</ul>
+
+<hr />
+
+<h3>5. Risks & Mitigation</h3>
+
+<h4>Risk 1: Limited Resources (Single Developer)</h4>
+<ul>
+  <li><strong>Probability:</strong> High</li>
+  <li><strong>Impact:</strong> Medium</li>
+  <li><strong>Mitigation:</strong> Strict MVP scope, avoidance of complex algorithms</li>
+</ul>
+
+<h4>Risk 2: Cycle Prediction Accuracy</h4>
+<ul>
+  <li><strong>Probability:</strong> Medium</li>
+  <li><strong>Impact:</strong> Medium</li>
+  <li><strong>Mitigation:</strong> Clear disclaimers, no medical advice</li>
+</ul>
+
+<h4>Risk 3: Regulatory Constraints (GDPR, HIPAA)</h4>
+<ul>
+  <li>End-to-end encryption on the client side</li>
+  <li>No server-side data processing</li>
+  <li>User control over backups and data deletion</li>
+  <li>Privacy by design and by default</li>
+  <li>Transparent and clear privacy policy</li>
+</ul>
+
+<h4>Risk 4: User Trust</h4>
+<ul>
+  <li>Transparent privacy policy</li>
+  <li>Open explanation of data storage architecture</li>
+</ul>
+
+<h4>Risk 5: Loss of Encryption Key</h4>
+<ul>
+  <li>User warnings</li>
+  <li>Clear backup instructions</li>
+</ul>
+
+<hr />
+
+<h3>6. Milestones & Phases</h3>
+
+<h4>MVP</h4>
+<ul>
+  <li>Basic cycle tracking</li>
+  <li>Local data storage</li>
+  <li>Basic predictions</li>
+  <li>Data encryption</li>
+  <li>Encrypted cloud backups</li>
+  <li>Data recovery on a new device</li>
+</ul>
+
+<h4>Beta</h4>
+<ul>
+  <li>Testing with real users</li>
+  <li>Bug fixing</li>
+  <li>UX improvements</li>
+</ul>
+
+<h4>Release</h4>
+<ul>
+  <li>Preparation and Google Play release</li>
+  <li>Final documentation and privacy policy</li>
+</ul>
+
+<h4>Post-Release Iterations</h4>
+<ul>
+  <li>Improved prediction algorithms</li>
+  <li>Additional symptom tracking</li>
+  <li>Expanded functionality (Post-MVP)</li>
+</ul>
+
+<hr />
+
+<h3>7. Stakeholders</h3>
+<ul>
+  <li>Product Owner / Business Analyst / Developer — myself</li>
+  <li>Regulatory authorities</li>
+  <li>End users</li>
+</ul>
 
