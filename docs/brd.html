@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Privacy-First Menstrual Cycle Tracker Documentation</title>
+</head>
+<body>
 
+<h1>Business Requirements Document (BRD)</h1>
+
+<h2>1. Document Overview</h2>
+
+<h3>1.1 Purpose</h3>
+<p>
+The purpose of this document is to define the business requirements for a mobile application
+for menstrual cycle tracking, with a strong focus on user data privacy and secure data transfer
+between devices.
+</p>
+
+<h3>1.2 Scope of Document</h3>
+<p>This document describes:</p>
+<ul>
+  <li>product business goals</li>
+  <li>key business requirements</li>
+  <li>constraints and risks</li>
+  <li>success criteria</li>
+</ul>
+<p>
+Technical implementation details and system architecture are <strong>out of scope</strong> for this document.
+</p>
+
+<hr>
+
+<h2>2. Business Background</h2>
+
+<h3>2.1 Problem Statement</h3>
+<p>
+Most menstrual cycle tracking applications on the market are monetized through:
+</p>
+<ul>
+  <li>collection and analysis of personal data</li>
+  <li>data sharing with third parties</li>
+  <li>use of user data for advertising and research purposes</li>
+</ul>
+<p>
+Users lack a secure alternative that allows them to fully control their data
+and be confident in its confidentiality.
+</p>
+
+<h3>2.2 Business Opportunity</h3>
+<p>
+Growing user awareness of privacy concerns and advances in AI tools make it possible to create:
+</p>
+<ul>
+  <li>a privacy-first product</li>
+  <li>without dependence on data sales</li>
+  <li>with minimal infrastructure</li>
+  <li>focused on user trust rather than monetization</li>
+</ul>
+
+<hr>
+
+<h2>3. Business Objectives</h2>
+
+<h3>3.1 Primary Objectives</h3>
+<ul>
+  <li>Provide users with a secure menstrual cycle tracking application</li>
+  <li>Ensure full user control over personal data</li>
+  <li>Eliminate selling or analyzing user data</li>
+</ul>
+
+<h3>3.2 Secondary Objectives</h3>
+<ul>
+  <li>Enable data transfer between devices</li>
+  <li>Minimize regulatory and legal risks</li>
+</ul>
+
+<hr>
+
+<h2>4. Stakeholders</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Stakeholder</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Product Owner</td>
+      <td>Defines vision and priorities</td>
+    </tr>
+    <tr>
+      <td>Developer</td>
+      <td>Product implementation</td>
+    </tr>
+    <tr>
+      <td>Regulatory Bodies</td>
+      <td>Compliance oversight</td>
+    </tr>
+    <tr>
+      <td>End Users</td>
+      <td>Use of the product</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>5. Target Audience</h2>
+
+<h3>5.1 Primary Users</h3>
+<ul>
+  <li>Women before menopause</li>
+  <li>Pregnant women</li>
+</ul>
+
+<h3>5.2 User Needs</h3>
+<ul>
+  <li>Simple and clear cycle tracking</li>
+  <li>Confidential handling of medical data</li>
+  <li>Ability to restore data when switching devices</li>
+  <li>No ads or hidden data collection</li>
+</ul>
+
+<hr>
+
+<h2>6. Business Requirements</h2>
+
+<h3>6.1 Core Business Requirements</h3>
+<ul>
+  <li>The app must be usable without registration</li>
+  <li>User data must be stored locally on the device</li>
+  <li>Optional encrypted cloud backup must be available</li>
+  <li>User data must not be used for analytics, advertising, or research</li>
+  <li>Users must be able to delete all their data</li>
+</ul>
+
+<h3>6.2 Data Privacy &amp; Compliance Requirements</h3>
+<ul>
+  <li>All user data must be encrypted on the client side</li>
+  <li>The server must not have access to decrypted data</li>
+  <li>The application must comply with GDPR</li>
+  <li>The architecture must follow Privacy by Design and Privacy by Default principles</li>
+  <li>Explicit user consent is required for cloud storage</li>
+</ul>
+
+<h3>6.3 Platform Requirements</h3>
+<ul>
+  <li>Supported platform: Android</li>
+  <li>Compliance with Google Play health app requirements</li>
+</ul>
+
+<hr>
+
+<h2>7. Out of Scope (Business Perspective)</h2>
+<ul>
+  <li>Monetization</li>
+  <li>Integration with medical institutions</li>
+  <li>User data analysis</li>
+  <li>Advertising and research features</li>
+  <li>Medical recommendations</li>
+</ul>
+
+<hr>
+
+<h2>8. Assumptions</h2>
+<ul>
+  <li>Users value data privacy</li>
+  <li>Users are willing to use cloud storage if end-to-end encryption is provided</li>
+  <li>Users understand the value of data backups</li>
+  <li>The product is developed and maintained by a single person</li>
+</ul>
+
+<hr>
+
+<h2>9. Constraints</h2>
+<ul>
+  <li>Limited financial resources</li>
+  <li>Limited human resources</li>
+  <li>Compliance with GDPR and Google Play requirements</li>
+  <li>Secure server infrastructure limitations</li>
+</ul>
+
+<hr>
+
+<h2>10. Risks and Mitigation</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Risk</th>
+      <th>Impact</th>
+      <th>Mitigation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Regulatory restrictions</td>
+      <td>High</td>
+      <td>Privacy-first architecture, E2E encryption</td>
+    </tr>
+    <tr>
+      <td>User distrust</td>
+      <td>High</td>
+      <td>Transparent privacy policy</td>
+    </tr>
+    <tr>
+      <td>Limited resources</td>
+      <td>Medium</td>
+      <td>Clearly defined MVP</td>
+    </tr>
+    <tr>
+      <td>Prediction errors</td>
+      <td>Medium</td>
+      <td>No medical recommendations</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h2>11. Success Criteria</h2>
+
+<h3>11.1 Business Success Metrics</h3>
+<ul>
+  <li>The app is published on Google Play</li>
+  <li>No violations related to personal data processing</li>
+  <li>Users can securely transfer data between devices</li>
+</ul>
+
+<h3>11.2 Acceptance Criteria</h3>
+<ul>
+  <li>Users can start using the app without registration</li>
+  <li>Users can create, read, update, delete, and download their data</li>
+  <li>Users fully control cloud storage usage</li>
+  <li>The developer has no access to user data</li>
+</ul>
