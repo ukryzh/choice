@@ -1,1 +1,311 @@
+<h2>Product Requirements Document</h2>
+
+<h3>1. Overview</h3>
+
+<h4>1.1 Purpose</h4>
+<p>
+This document defines the product requirements for a mobile menstrual cycle
+tracking application with a strong focus on data privacy and secure data
+portability between user devices.
+</p>
+
+<p>The PRD defines:</p>
+<ul>
+  <li>User journeys</li>
+  <li>Functional requirements</li>
+  <li>UX and privacy principles</li>
+  <li>MVP readiness criteria</li>
+</ul>
+
+<h4>1.2 Product Vision</h4>
+<p>
+To create a privacy-first menstrual cycle tracking application in which users
+have full control over their data — including storage, transfer, and deletion —
+while the developer has no access to the data content.
+</p>
+
+<h4>1.3 In Scope (MVP)</h4>
+<ul>
+  <li>Menstrual cycle tracking</li>
+  <li>Cycle history and predictions</li>
+  <li>Symptom logging</li>
+  <li>Local data storage</li>
+  <li>Optional encrypted cloud backups</li>
+  <li>Data recovery on a new device</li>
+</ul>
+
+<h4>1.4 Out of Scope</h4>
+<ul>
+  <li>Monetization</li>
+  <li>Analytics and tracking</li>
+  <li>Medical recommendations</li>
+  <li>Integrations with clinics or healthcare providers</li>
+</ul>
+
+<hr />
+
+<h3>2. User Personas</h3>
+
+<h4>Persona 1: Privacy-Conscious User</h4>
+<ul>
+  <li>Does not trust mass-market health applications</li>
+  <li>Is concerned about personal data leaks</li>
+  <li>Prefers a simple and transparent interface</li>
+</ul>
+
+<h4>Persona 2: Device-Switching User</h4>
+<ul>
+  <li>Frequently changes devices</li>
+  <li>Fears losing personal data</li>
+  <li>Is willing to use cloud storage if strong encryption is guaranteed</li>
+</ul>
+
+<hr />
+
+<h3>3. Design & Privacy Principles</h3>
+
+<h4>3.1 Privacy First</h4>
+<ul>
+  <li>All data belongs exclusively to the user</li>
+  <li>All data is encrypted before being sent to the server</li>
+  <li>The server has no access to decrypted user data</li>
+</ul>
+
+<h4>3.2 User Control</h4>
+<ul>
+  <li>Cloud storage is strictly opt-in</li>
+  <li>Users can delete their data at any time</li>
+  <li>The application works without registration</li>
+</ul>
+
+<h4>3.3 Simplicity</h4>
+<ul>
+  <li>Minimal number of screens</li>
+  <li>Clear and understandable language</li>
+  <li>No overloaded or complex settings</li>
+</ul>
+
+<hr />
+
+<h3>4. User Journeys</h3>
+
+<h4>4.1 First App Launch</h4>
+
+<p><strong>Description:</strong><br />
+The user opens the application for the first time.
+</p>
+
+<p><strong>Flow:</strong></p>
+<ol>
+  <li>Welcome screen</li>
+  <li>Short explanation of privacy principles</li>
+  <li>Mode selection:
+    <ul>
+      <li>Sign in and synchronize</li>
+      <li>Skip authorization</li>
+    </ul>
+  </li>
+  <li>Set a four-digit app access code</li>
+  <li>Navigate to the main screen (Calendar)</li>
+</ol>
+
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+  <li>The app can be used without account creation</li>
+  <li>Cloud usage is optional</li>
+</ul>
+
+<hr />
+
+<h4>4.2 Adding a Cycle</h4>
+
+<p><strong>User Story:</strong><br />
+As a user, I want to add the start date of my cycle so that I can track regularity.
+</p>
+
+<p><strong>Flow:</strong></p>
+<ol>
+  <li>Tap “Log period”</li>
+  <li>Select dates</li>
+  <li>Select symptoms (optional)</li>
+  <li>Save</li>
+</ol>
+
+<p><strong>Edge Cases:</strong></p>
+<ul>
+  <li>Overlapping dates</li>
+  <li>Missing cycle end date</li>
+</ul>
+
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+  <li>Data is saved</li>
+  <li>History is updated</li>
+  <li>Predictions are recalculated</li>
+</ul>
+
+<hr />
+
+<h4>4.3 Viewing History and Predictions</h4>
+
+<p><strong>User Story:</strong><br />
+As a user, I want to see past cycles and upcoming predictions to plan my activity.
+</p>
+
+<p><strong>Flow:</strong></p>
+<ol>
+  <li>Open history screen</li>
+  <li>View calendar</li>
+  <li>View predicted cycle dates</li>
+</ol>
+
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+  <li>Predictions update automatically</li>
+</ul>
+
+<hr />
+
+<h4>4.4 Symptom Logging</h4>
+
+<p><strong>User Story:</strong><br />
+As a user, I want to log symptoms for a specific day of my cycle.
+</p>
+
+<p><strong>Flow:</strong></p>
+<ol>
+  <li>Select a day</li>
+  <li>Select symptoms</li>
+  <li>Save</li>
+</ol>
+
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+  <li>Symptoms are linked to a specific date</li>
+  <li>Symptoms can be edited</li>
+</ul>
+
+<hr />
+
+<h4>4.5 Enabling Cloud Backup</h4>
+
+<p><strong>User Story:</strong><br />
+As a user, I want to enable encrypted cloud backups to avoid losing my data.
+</p>
+
+<p><strong>Flow:</strong></p>
+<ol>
+  <li>Open Profile screen</li>
+  <li>Explanation of:
+    <ul>
+      <li>what data is sent</li>
+      <li>how encryption works</li>
+      <li>why the server has no access</li>
+    </ul>
+  </li>
+  <li>User confirmation</li>
+</ol>
+
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+  <li>Data is encrypted on the client</li>
+  <li>Data transfer happens only after explicit consent</li>
+</ul>
+
+<hr />
+
+<h4>4.6 Data Recovery on a New Device</h4>
+
+<p><strong>User Story:</strong><br />
+As a user, I want to restore my data on a new device so I can continue using the app.
+</p>
+
+<p><strong>Flow:</strong></p>
+<ol>
+  <li>Install the application</li>
+  <li>Select “Restore data”</li>
+  <li>Authenticate / confirm access</li>
+  <li>Download and decrypt data</li>
+</ol>
+
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+  <li>All data is fully restored</li>
+  <li>No developer access to user data</li>
+</ul>
+
+<hr />
+
+<h4>4.7 Data Deletion</h4>
+
+<p><strong>User Story:</strong><br />
+As a user, I want to delete all my data to ensure it cannot be accessed by third parties.
+</p>
+
+<p><strong>Flow:</strong></p>
+<ol>
+  <li>Open Profile screen</li>
+  <li>Select “Delete all data”</li>
+  <li>Choose data type to delete (local / cloud / all)</li>
+  <li>Confirm action</li>
+</ol>
+
+<p><strong>Acceptance Criteria:</strong></p>
+<ul>
+  <li>Local data is deleted</li>
+  <li>Cloud backups are deleted</li>
+</ul>
+
+<hr />
+
+<h3>5. Functional Requirements (Summary)</h3>
+<ul>
+  <li>Local data storage</li>
+  <li>Optional cloud backups</li>
+  <li>End-to-end encryption</li>
+  <li>View, edit, and delete data</li>
+  <li>Offline support</li>
+</ul>
+
+<hr />
+
+<h3>6. Non-Functional Requirements</h3>
+
+<h4>Performance</h4>
+<p>All user actions must complete within ≤ 1 second.</p>
+
+<h4>Security</h4>
+<ul>
+  <li>Client-side encryption</li>
+  <li>No server access to user data</li>
+</ul>
+
+<h4>Reliability</h4>
+<ul>
+  <li>No data loss when switching devices</li>
+</ul>
+
+<h4>Accessibility</h4>
+<ul>
+  <li>Readable fonts</li>
+</ul>
+
+<hr />
+
+<h3>7. Compliance</h3>
+<ul>
+  <li>GDPR compliance</li>
+  <li>Privacy by Design / Privacy by Default</li>
+  <li>Google Play policy compliance</li>
+</ul>
+
+<hr />
+
+<h3>8. Success Metrics (MVP)</h3>
+<ul>
+  <li>Application published on Google Play</li>
+  <li>All user journeys work without errors</li>
+  <li>No analytics or tracking tools</li>
+  <li>Users can successfully restore data</li>
+</ul>
 
