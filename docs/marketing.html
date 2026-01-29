@@ -1,191 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Research Document</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #111;
+    }
+
+    h1, h2, h3 {
+      margin-top: 2.5rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    ul {
+      margin-left: 1.2rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px 10px;
+      text-align: left;
+    }
+
+    th {
+      background: #f5f5f5;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
 <h1>Market Research Document</h1>
-<p></p>
-1. Research Objective
-Primary Objective
-Оценить целесообразность разработки приложения для отслеживания менструального цикла с приоритетом конфиденциальности пользовательских данных.
-Research Questions
-Существует ли пользовательский спрос на privacy-first решения в категории cycle tracking?
-Как текущие лидеры рынка работают с пользовательскими данными?
-Существует ли рыночный разрыв (market gap) между пользовательскими ожиданиями и текущими продуктами?
-Какие ограничения накладывает privacy-first подход на продукт и бизнес-модель?
 
-2. Scope and Limitations
-In Scope
-Mobile cycle tracking applications
-Android / iOS consumer market
-Privacy, data handling, monetization models
-Qualitative and desk research
-Out of Scope
-UX/UI comparative analysis
-Clinical accuracy of cycle predictions
-Enterprise / B2B healthcare solutions
-Regulatory deep dive (GDPR/medical compliance — high-level only)
+<h2>1. Research Objective</h2>
 
-3. Market Overview
-Category
-FemTech / Digital Health / Personal Health Tracking
-Market Characteristics
-Высокая пользовательская база
-Высокая чувствительность данных
-Низкая прозрачность обработки данных
-Зависимость от сторонних платформ (analytics, ads, cloud)
+<h3>Primary Objective</h3>
+<p>
+To evaluate the feasibility of developing a menstrual cycle tracking application
+with a strong emphasis on user data privacy.
+</p>
 
+<h3>Research Questions</h3>
+<ol>
+  <li>Is there user demand for privacy-first solutions in the cycle tracking category?</li>
+  <li>How do current market leaders handle user data?</li>
+  <li>Is there a market gap between user expectations and existing products?</li>
+  <li>What constraints does a privacy-first approach impose on the product and business model?</li>
+</ol>
 
-Market Indicators (Google Play Store)
-App
-Approx. installs
-Flo
-100M+
-Period Tracker (Simple Design)
-100M+
-Clue
-50M+
-WomanLog
-10M+
-Maya
-10M+
+<h2>2. Scope and Limitations</h2>
 
-Observation: рынок зрелый, с высокой концентрацией пользователей у нескольких крупных игроков.
+<h3>In Scope</h3>
+<ul>
+  <li>Mobile cycle tracking applications</li>
+  <li>Android / iOS consumer market</li>
+  <li>Privacy, data handling, monetization models</li>
+  <li>Qualitative and desk research</li>
+</ul>
 
-4. User Problem Definition
-Core Problem
-Пользователи вынуждены делиться интимными медицинскими данными в обмен на доступ к базовой функциональности приложения.
-Types of Collected Data
-Menstrual cycle dates
-Pregnancy and fertility data
-Symptoms, mood, sexual activity (в ряде приложений)
-Device and behavioral metadata
-Risks Identified
-Использование данных для таргетированной рекламы
-Потенциальное использование данных третьими сторонами
-Юридические и социальные риски (особенно в контексте репродуктивных прав)
+<h3>Out of Scope</h3>
+<ul>
+  <li>UX/UI comparative analysis</li>
+  <li>Clinical accuracy of cycle predictions</li>
+  <li>Enterprise / B2B healthcare solutions</li>
+  <li>Regulatory deep dive (GDPR / medical compliance — high-level only)</li>
+</ul>
 
-5. Competitive Analysis (High-Level)
-Monetization & Data Practices
-Анализ privacy policy популярных приложений показывает:
-Сбор персональных и чувствительных данных
-Передача данных третьим лицам (analytics, ads)
-Использование агрегированных данных для исследований
-Размытые формулировки о «улучшении сервиса»
-Key Insight: privacy чаще декларируется, чем реально обеспечивается.
+<h2>3. Market Overview</h2>
 
-Flo
-https://flo.health/privacy-policy
-Period Tracker (Simple Design)
-https://pc.simpledesign.ltd/privacypolicy.html
-Clue
-https://helloclue.com/privacy
-WomanLog
-https://www.womanlog.com/en/privacy_policy
+<h3>Category</h3>
+<p>FemTech / Digital Health / Personal Health Tracking</p>
 
+<h3>Market Characteristics</h3>
+<ul>
+  <li>Large user base</li>
+  <li>Highly sensitive data</li>
+  <li>Low transparency in data processing</li>
+  <li>Dependence on third-party platforms (analytics, ads, cloud)</li>
+</ul>
 
+<h3>Market Indicators (Google Play Store)</h3>
 
+<table>
+  <thead>
+    <tr>
+      <th>App</th>
+      <th>Approx. Installs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Flo</td><td>100M+</td></tr>
+    <tr><td>Period Tracker (Simple Design)</td><td>100M+</td></tr>
+    <tr><td>Clue</td><td>50M+</td></tr>
+    <tr><td>WomanLog</td><td>10M+</td></tr>
+    <tr><td>Maya</td><td>10M+</td></tr>
+  </tbody>
+</table>
 
+<p><strong>Observation:</strong> the market is mature, with high user concentration among a few major players.</p>
 
+<h2>4. User Problem Definition</h2>
 
+<h3>Core Problem</h3>
+<p>
+Users are forced to share intimate medical data in exchange for access
+to basic app functionality.
+</p>
 
-6. User Demand for Privacy
-Research Evidence
-Некоторые лидеры рынка были замешаны в крупных скандалах, связанных с утечкой пользовательских данных:
+<h3>Types of Collected Data</h3>
+<ul>
+  <li>Menstrual cycle dates</li>
+  <li>Pregnancy and fertility data</li>
+  <li>Symptoms, mood, sexual activity (in some apps)</li>
+  <li>Device and behavioral metadata</li>
+</ul>
 
-Компания
-Ссылка
-Maya
-https://www.mozillafoundation.org/en/privacynotincluded/maya-period-fertility-ovulation-pregnancy/
-Flo
-https://www.reuters.com/sustainability/boards-policy-regulation/google-flo-health-pay-56-million-period-tracking-app-privacy-case-2025-09-25/
-Расследования Privacy International 
-https://privacyinternational.org/learning-resources/no-bodys-business-mine-vol-2
+<h3>Identified Risks</h3>
+<ul>
+  <li>Use of data for targeted advertising</li>
+  <li>Potential sharing with third parties</li>
+  <li>Legal and social risks (especially regarding reproductive rights)</li>
+</ul>
 
+<h2>5. Competitive Analysis (High-Level)</h2>
 
+<h3>Monetization & Data Practices</h3>
+<p>Analysis of privacy policies of popular apps reveals:</p>
+<ul>
+  <li>Collection of personal and sensitive data</li>
+  <li>Sharing data with third parties (analytics, ads)</li>
+  <li>Use of aggregated data for research</li>
+  <li>Vague language about “service improvement”</li>
+</ul>
 
+<p><strong>Key Insight:</strong> privacy is often declared rather than genuinely enforced.</p>
 
+<ul>
+  <li><a href="https://flo.health/privacy-policy">Flo Privacy Policy</a></li>
+  <li><a href="https://pc.simpledesign.ltd/privacypolicy.html">Period Tracker Privacy Policy</a></li>
+  <li><a href="https://helloclue.com/privacy">Clue Privacy Policy</a></li>
+  <li><a href="https://www.womanlog.com/en/privacy_policy">WomanLog Privacy Policy</a></li>
+</ul>
 
+<h2>6. User Demand for Privacy</h2>
 
-Исследования показывают, что:
-Пользователи заявляют высокую ценность приватности
-Отсутствие альтернатив вынуждает их соглашаться на компромиссы
-Прозрачность и контроль повышают доверие к продукту
-Ссылки на исследования:
-https://www.fmg.ac.uk/sites/default/files/2023-07/DP881.pdf
-https://www.sciencedirect.com/science/article/abs/pii/S0167923617302221
-Interpretation
-Отсутствие массового перехода к privacy-first решениям не означает отсутствия спроса - скорее, отсутствие реального выбора.
+<h3>Research Evidence</h3>
 
-7. Privacy Paradox Explanation
-Observed Behavior
-Пользователи продолжают использовать приложения с сомнительными privacy practices
-Privacy policies редко читаются
-Opt-out механизмы сложны или отсутствуют
+<table>
+  <thead>
+    <tr>
+      <th>Company</th>
+      <th>Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Maya</td>
+      <td><a href="https://www.mozillafoundation.org/en/privacynotincluded/maya-period-fertility-ovulation-pregnancy/">Mozilla Foundation</a></td>
+    </tr>
+    <tr>
+      <td>Flo</td>
+      <td><a href="https://www.reuters.com/sustainability/boards-policy-regulation/google-flo-health-pay-56-million-period-tracking-app-privacy-case-2025-09-25/">Reuters</a></td>
+    </tr>
+    <tr>
+      <td>Industry Investigations</td>
+      <td><a href="https://privacyinternational.org/learning-resources/no-bodys-business-mine-vol-2">Privacy International</a></td>
+    </tr>
+  </tbody>
+</table>
 
+<p>Studies indicate that:</p>
+<ul>
+  <li>Users claim to value privacy highly</li>
+  <li>Lack of alternatives forces compromise</li>
+  <li>Transparency and control increase trust</li>
+</ul>
 
-Conclusion
-Поведение пользователей объясняется не безразличием, а:
-высокой стоимостью отказа
-отсутствием альтернатив
-когнитивной перегрузкой
+<h2>7. Privacy Paradox Explanation</h2>
 
-8. Identified Market Gap
-Gap Definition
-Отсутствует продукта, который:
-не передаёт данные третьим лицам
-позволяет локальное хранение данных
-не использует рекламу
-не требует подписки как обязательное условие
-Target User Segment
-Privacy-conscious users
-Technically curious users
-Users willing to trade convenience for control
-Solo users / self-quantification enthusiasts
-Note: сегмент ограниченный, не массовый.
+<h3>Observed Behavior</h3>
+<ul>
+  <li>Users continue using apps with questionable privacy practices</li>
+  <li>Privacy policies are rarely read</li>
+  <li>Opt-out mechanisms are complex or missing</li>
+</ul>
 
-9. Monetization Constraints
-Evaluated Models
-Model
-Feasibility
-Reason
-Advertising
-Low
-Requires tracking & scale
-Data resale
-Low
-Conflicts with product mission
-Subscription
-Medium
-Low willingness to pay
-Data marketplace
-Low
-Ethical, legal, economic risks
-Crowdfunding / Sponsorship
-Medium
-Unstable but possible
+<h3>Conclusion</h3>
+<p>
+User behavior reflects not indifference, but high switching costs,
+lack of alternatives, and cognitive overload.
+</p>
 
-Key Finding
-Privacy-first подход существенно ограничивает коммерческую масштабируемость продукта.
+<h2>8. Identified Market Gap</h2>
 
-10. Strategic Conclusion
-Validation Results
-Problem exists
-Market gap exists
-Demand exists (niche)
-Traditional business models do not fit
+<h3>Gap Definition</h3>
+<p>No product currently offers:</p>
+<ul>
+  <li>No third-party data sharing</li>
+  <li>Local data storage</li>
+  <li>No advertising</li>
+  <li>No mandatory subscription</li>
+</ul>
 
+<h3>Target User Segment</h3>
+<ul>
+  <li>Privacy-conscious users</li>
+  <li>Technically curious users</li>
+  <li>Users willing to trade convenience for control</li>
+  <li>Self-quantification enthusiasts</li>
+</ul>
 
-Product Implication
-Проект целесообразен как:
-personal-use product
-experimental product
-research-driven case study
-non-commercial or donation-supported solution
+<p><strong>Note:</strong> this is a niche, not mass-market segment.</p>
 
-11. Final Decision
-На основе market research принято решение:
-отказаться от агрессивной монетизации
-сфокусироваться на privacy-first архитектуре
-рассматривать проект как продуктовый эксперимент, а не стартап
+<h2>9. Monetization Constraints</h2>
 
-12. Open Questions (Next Research Phase)
-Долгосрочная поддержка проекта без монетизации
-Юридическая устойчивость privacy-first решений
-Возможность community-driven развития
+<table>
+  <thead>
+    <tr>
+      <th>Model</th>
+      <th>Feasibility</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Advertising</td><td>Low</td><td>Requires tracking & scale</td></tr>
+    <tr><td>Data resale</td><td>Low</td><td>Conflicts with product mission</td></tr>
+    <tr><td>Subscription</td><td>Medium</td><td>Low willingness to pay</td></tr>
+    <tr><td>Data marketplace</td><td>Low</td><td>Ethical, legal, economic risks</td></tr>
+    <tr><td>Crowdfunding / Sponsorship</td><td>Medium</td><td>Unstable but possible</td></tr>
+  </tbody>
+</table>
 
+<h2>10. Strategic Conclusion</h2>
+
+<ul>
+  <li>The problem exists</li>
+  <li>A market gap exists</li>
+  <li>Demand exists (niche)</li>
+  <li>Traditional business models do not fit</li>
+</ul>
+
+<h2>11. Final Decision</h2>
+
+<p>The project will:</p>
+<ul>
+  <li>Avoid aggressive monetization</li>
+  <li>Focus on privacy-first architecture</li>
+  <li>Be treated as a product experiment, not a startup</li>
+</ul>
+
+<h2>12. Open Questions</h2>
+
+<ul>
+  <li>Long-term sustainability without monetization</li>
+  <li>Legal resilience of privacy-first solutions</li>
+  <li>Potential for community-driven development</li>
+</ul>
+
+</body>
+</html>
