@@ -1,1 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Software Requirements Specification (SRS)</title>
+</head>
+<body>
+
+<h1>Software Requirements Specification (SRS)</h1>
+
+<h2>1. Introduction</h2>
+
+<h3>1.1 Purpose</h3>
+<p>
+This document describes the <strong>technical requirements</strong> for the development of a mobile application that allows users to:
+</p>
+<ul>
+  <li>track the menstrual cycle and symptoms,</li>
+  <li>store data locally and in the cloud with end-to-end encryption,</li>
+  <li>transfer data between devices while maintaining confidentiality.</li>
+</ul>
+
+<h3>1.2 Scope</h3>
+<ul>
+  <li><strong>Supported platforms:</strong> Android</li>
+  <li><strong>Core features:</strong> local cycle tracking, history, prediction, symptom log, cloud backup, data recovery</li>
+  <li><strong>Main constraints:</strong> minimal resource usage, full data privacy, no analytics or advertising</li>
+</ul>
+
+<hr>
+
+<h2>2. Overall Description</h2>
+
+<h3>2.1 Product Perspective</h3>
+<p>
+The application is a standalone mobile product with a client–server architecture used for optional cloud storage of encrypted data.
+</p>
+
+<p><strong>Components:</strong></p>
+<ul>
+  <li><strong>Client (mobile application):</strong> UI, local storage, encryption</li>
+  <li><strong>Server (cloud storage):</strong> storage of encrypted data without access to its contents</li>
+</ul>
+
+<hr>
+
+<h3>2.2 User Characteristics</h3>
+<ul>
+  <li>Women before menopause, pregnant women</li>
+  <li>Value data privacy</li>
+  <li>May change devices and want to restore their data</li>
+</ul>
+
+<hr>
+
+<h3>2.3 Constraints</h3>
+<ul>
+  <li>Use of free services / SDKs</li>
+  <li>Support for low-end devices</li>
+  <li>GDPR and Google Play requirements</li>
+</ul>
+
+<hr>
+
+<h2>3. Functional Requirements</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Requirement</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>FR-1</td>
+      <td>Local storage</td>
+      <td>Cycle, symptom, and prediction data are stored locally on the device</td>
+    </tr>
+    <tr>
+      <td>FR-2</td>
+      <td>Add cycle</td>
+      <td>The user can add the start and end dates of a cycle</td>
+    </tr>
+    <tr>
+      <td>FR-3</td>
+      <td>View history</td>
+      <td>Cycle history is displayed in a calendar view</td>
+    </tr>
+    <tr>
+      <td>FR-4</td>
+      <td>Prediction</td>
+      <td>The system predicts upcoming cycles based on entered data</td>
+    </tr>
+    <tr>
+      <td>FR-5</td>
+      <td>Symptom log</td>
+      <td>The user can log symptoms by date</td>
+    </tr>
+    <tr>
+      <td>FR-6</td>
+      <td>Edit / delete data</td>
+      <td>The user can edit or delete any stored data</td>
+    </tr>
+    <tr>
+      <td>FR-7</td>
+      <td>Optional cloud backup</td>
+      <td>The user can enable cloud backup</td>
+    </tr>
+    <tr>
+      <td>FR-8</td>
+      <td>End-to-end encryption</td>
+      <td>All data is encrypted on the client before being uploaded to the cloud</td>
+    </tr>
+    <tr>
+      <td>FR-9</td>
+      <td>Per-record encryption</td>
+      <td>Each cycle entry is encrypted individually</td>
+    </tr>
+    <tr>
+      <td>FR-10</td>
+      <td>Data recovery</td>
+      <td>Data can be restored on a new device using the encryption key</td>
+    </tr>
+    <tr>
+      <td>FR-11</td>
+      <td>Data deletion</td>
+      <td>The user can fully delete local and cloud data</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<h1>Use Cases</h1>
+
+<p>[Diagram placeholder]</p>
+
+<h2>UC-1: Start using the app without registration</h2>
+
+<p><strong>Primary Actor:</strong> User</p>
+<p><strong>Goal:</strong> Start using the app without creating an account</p>
+<p><strong>Related Requirements:</strong> FR-1</p>
+
+<h3>Preconditions</h3>
+<ul>
+  <li>The app is installed on the device</li>
+  <li>The app is launched for the first time</li>
+</ul>
+
+<h3>Trigger</h3>
+<p>The user opens the app</p>
+
+<h3>Main Flow (Happy Path)</h3>
+<ol>
+  <li>The app starts.</li>
+  <li>The user is offered Google authentication (for cloud backup).</li>
+  <li>The user skips authentication.</li>
+  <li>A screen to set a four-digit access code is shown.</li>
+  <li>The app navigates to the Calendar screen.</li>
+</ol>
+
+<h3>Postconditions</h3>
+<ul>
+  <li>The app is ready for use</li>
+  <li>Local storage is initialized</li>
+</ul>
+
+<hr>
+
+<h2>UC-2: Identification using Gmail</h2>
+
+<p><strong>Primary Actor:</strong> User</p>
+<p><strong>Goal:</strong> Use the app with cloud backup and cross-device data recovery</p>
+<p><strong>Related Requirements:</strong> FR-7, FR-10</p>
+
+<h3>Preconditions</h3>
+<ul>
+  <li>The app is installed</li>
+</ul>
+
+<h3>Trigger</h3>
+<ul>
+  <li>The user opens the app for the first time</li>
+  <li>The user taps “Sign in with Google” on the Profile screen</li>
+</ul>
+
+<h3>Main Flow (Happy Path)</h3>
+<ol>
+  <li>The app starts.</li>
+  <li>The user is offered Google authentication.</li>
+  <li>The user agrees to authenticate.</li>
+  <li>A screen to set a four-digit access code appears.</li>
+  <li>The user sets the code.</li>
+  <li>The app navigates to the Calendar screen.</li>
+</ol>
+
+<p><strong>Alternative Flow</strong></p>
+<ol>
+  <li>The user opens the Profile screen.</li>
+  <li>Taps “Sign in with Google”.</li>
+  <li>Selects a Google account.</li>
+  <li>The app returns to the Profile screen.</li>
+</ol>
+
+<h3>Postconditions</h3>
+<ul>
+  <li>The app is ready for use</li>
+  <li>The user is identified via Gmail</li>
+</ul>
+
+<hr>
+
+<h2>UC-3: Add a new menstrual cycle</h2>
+
+<p><strong>Primary Actor:</strong> User</p>
+<p><strong>Goal:</strong> Record the start and end of a cycle</p>
+<p><strong>Related Requirements:</strong> FR-2, FR-6</p>
+
+<h3>Preconditions</h3>
+<ul>
+  <li>The app is running</li>
+  <li>The user is on the Calendar screen</li>
+</ul>
+
+<h3>Trigger</h3>
+<p>The user taps “Log period”</p>
+
+<h3>Main Flow (Happy Path)</h3>
+<ol>
+  <li>The app displays an input form:
+    <ul>
+      <li>cycle start date</li>
+      <li>cycle end date</li>
+    </ul>
+  </li>
+  <li>The user enters data.</li>
+  <li>The user confirms saving.</li>
+  <li>The app stores data locally.</li>
+  <li>Cycle history is updated.</li>
+</ol>
+
+<h3>Postconditions</h3>
+<ul>
+  <li>The new cycle is saved locally</li>
+  <li>The data is available for viewing and prediction</li>
+</ul>
+
+<hr>
+
+<h2>4. Non-Functional Requirements</h2>
+
+<h3>4.1 Performance</h3>
+<ul>
+  <li>UI response time ≤ 1 second</li>
+  <li>Data save/load time ≤ 1 second</li>
+</ul>
+
+<h3>4.2 Reliability</h3>
+<ul>
+  <li>No data loss when switching devices</li>
+  <li>Backup does not affect app usability</li>
+</ul>
+
+<h3>4.3 Security</h3>
+<ul>
+  <li>Data encryption: AES-256 or equivalent</li>
+  <li>Encryption key is stored only by the user</li>
+  <li>The server has no access to decrypted data</li>
+</ul>
+
+<h3>4.4 Usability / Accessibility</h3>
+<ul>
+  <li>Intuitive interface</li>
+  <li>Readable fonts and high contrast</li>
+  <li>Minimal steps for core scenarios</li>
+</ul>
+
+<hr>
+
+<h2>5. System Architecture</h2>
+
+<h3>5.1 Client</h3>
+<ul>
+  <li><strong>Data storage:</strong> SQLite / Room (Android)</li>
+  <li><strong>Encryption:</strong> AES-256, key generated on device</li>
+  <li><strong>UI:</strong> simple screens for tracking, history, symptom log, cloud</li>
+</ul>
+
+<h3>5.2 Server</h3>
+<ul>
+  <li><strong>Server type:</strong> cloud storage (Firebase)</li>
+  <li><strong>Storage:</strong> encrypted data only, no decryption</li>
+  <li><strong>API:</strong> CRUD operations over HTTPS</li>
+  <li><strong>Registration / login:</strong> optional via local unique identifier</li>
+</ul>
+
+<hr>
+
+<h2>6. Data Models</h2>
+
+<p><strong>Core entities:</strong></p>
+
+<ol>
+  <li><strong>CycleEntry</strong>
+    <ul>
+      <li>startDate: Date</li>
+      <li>endDate: Date</li>
+      <li>symptoms: list[string]</li>
+      <li>notes: string (optional)</li>
+    </ul>
+  </li>
+  <li><strong>UserData</strong>
+    <ul>
+      <li>encryptionKey: string (stored on client only)</li>
+      <li>cloudBackupId: string (technical cloud identifier)</li>
+    </ul>
+  </li>
+</ol>
+
+<hr>
+
+<h2>7. Interfaces</h2>
+<ul>
+  <li><strong>Client ↔ Server:</strong> REST API</li>
+  <li><strong>Client ↔ Local Storage:</strong> encrypted local storage</li>
+  <li><strong>Cloud backup:</strong> encrypted JSON / binary blobs</li>
+</ul>
+
+<hr>
+
+<h2>8. Acceptance Criteria</h2>
+<ul>
+  <li>The user can start using the app without registration</li>
+  <li>Adding, viewing, editing, and deleting data works correctly</li>
+  <li>Cloud backup works after being enabled and encrypted</li>
+  <li>Data is restored on a new device without loss</li>
+  <li>Data is fully deleted locally and in the cloud</li>
+  <li>The UI is responsive and intuitive</li>
+</ul>
+
+<hr>
+
+<h2>9. Risks &amp; Mitigation</h2>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>Risk</th>
+      <th>Probability</th>
+      <th>Impact</th>
+      <th>Mitigation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Encryption errors</td>
+      <td>Medium</td>
+      <td>Very High</td>
+      <td>Use proven AES-256 libraries, avoid custom crypto</td>
+    </tr>
+    <tr>
+      <td>User loses encryption key</td>
+      <td>Medium</td>
+      <td>High</td>
+      <td>Clear instructions on secure key storage</td>
+    </tr>
+    <tr>
+      <td>Data loss due to failure</td>
+      <td>Medium</td>
+      <td>High</td>
+      <td>Local and cloud backups, atomic saves</td>
+    </tr>
+    <tr>
+      <td>Resource limitations</td>
+      <td>High</td>
+      <td>Medium</td>
+      <td>Low-end optimization, minimal MVP</td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
 
