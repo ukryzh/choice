@@ -1,1 +1,226 @@
+<h1>Regulatory Compliance Analysis</h1>
 
+<p>
+This document maps the choice application against the regulatory regimes most
+relevant to a privacy-first menstrual cycle tracker: <strong>GDPR</strong> (EU),
+<strong>HIPAA</strong> (US), and <strong>Google Play health and personal data
+policies</strong>. The analysis is high-level and does not constitute legal advice.
+</p>
+
+<h2>1. Scope of Compliance</h2>
+
+<h3>1.1 Personal Data Handled</h3>
+<ul>
+  <li>Menstrual cycle dates (start, end)</li>
+  <li>Symptom logs attached to specific days</li>
+  <li>Cycle predictions derived from user input</li>
+  <li>Optional Google account identifier (for backup identity only)</li>
+</ul>
+<p>
+No device identifiers, location, contacts, advertising IDs, or behavioural
+metadata are collected.
+</p>
+
+<h3>1.2 Data Sensitivity Classification</h3>
+<ul>
+  <li>Menstrual data is treated as <strong>special category data</strong>
+    under GDPR Article 9 (data concerning health).</li>
+  <li>It is also <strong>health data</strong> under Google Play&rsquo;s health and
+    fitness policy.</li>
+  <li>It is <em>not</em> Protected Health Information (PHI) under HIPAA, because
+    choice is not operated by a covered entity or business associate. HIPAA
+    nonetheless informs the security model.</li>
+</ul>
+
+<hr />
+
+<h2>2. GDPR (EU 2016/679)</h2>
+
+<h3>2.1 Lawful Basis</h3>
+<ul>
+  <li><strong>Local-only mode:</strong> no processing by the developer occurs;
+    GDPR obligations are minimal because no personal data leaves the device.</li>
+  <li><strong>Cloud backup mode:</strong> processing is based on
+    <em>explicit consent</em> (Art. 6(1)(a) and Art. 9(2)(a)). Consent is
+    granular, opt-in, and revocable.</li>
+</ul>
+
+<h3>2.2 Principles Compliance</h3>
+<table border="1">
+  <thead>
+    <tr><th>Principle (Art. 5)</th><th>Implementation</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lawfulness, fairness, transparency</td>
+      <td>Plain-language privacy story on first launch and on the website.</td>
+    </tr>
+    <tr>
+      <td>Purpose limitation</td>
+      <td>Data is used only for cycle tracking and recovery — not analytics.</td>
+    </tr>
+    <tr>
+      <td>Data minimisation</td>
+      <td>No metadata, no device IDs, no behavioural events collected.</td>
+    </tr>
+    <tr>
+      <td>Accuracy</td>
+      <td>Users can edit and delete any record.</td>
+    </tr>
+    <tr>
+      <td>Storage limitation</td>
+      <td>Data is retained until the user deletes it; cloud backups can be
+        wiped at any time.</td>
+    </tr>
+    <tr>
+      <td>Integrity &amp; confidentiality</td>
+      <td>Per-record AES-256 encryption on the client; server stores ciphertext.</td>
+    </tr>
+    <tr>
+      <td>Accountability</td>
+      <td>Architecture is privacy-by-design; documentation is public.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2.3 Data Subject Rights</h3>
+<ul>
+  <li><strong>Access &amp; portability:</strong> all records are visible in-app and
+    exportable.</li>
+  <li><strong>Rectification:</strong> any record can be edited.</li>
+  <li><strong>Erasure:</strong> users can wipe local data, cloud data, or both.</li>
+  <li><strong>Withdraw consent:</strong> turning off cloud backup deletes
+    server-side data.</li>
+  <li><strong>Object to processing:</strong> not applicable (no processing
+    beyond what the user explicitly requests).</li>
+</ul>
+
+<h3>2.4 International Transfers</h3>
+<p>
+Cloud backups are stored on Firebase. Where Firebase regions outside the EU/EEA
+are used, data is transferred only as encrypted ciphertext that the developer
+and the cloud provider cannot decrypt, materially reducing transfer risk.
+</p>
+
+<h3>2.5 Privacy by Design / by Default (Art. 25)</h3>
+<ul>
+  <li>The default mode is local-only, no cloud, no account.</li>
+  <li>Cloud backup must be explicitly enabled by the user.</li>
+  <li>Encryption keys are generated and stored on the device.</li>
+</ul>
+
+<h3>2.6 Data Protection Impact Assessment (DPIA)</h3>
+<p>
+A DPIA is recommended under Art. 35 because health data is processed at scale.
+Given the architectural choice that the developer cannot decrypt user data, the
+residual risk is low. A short DPIA will be published before public release.
+</p>
+
+<hr />
+
+<h2>3. HIPAA (US)</h2>
+
+<p>
+choice is not a HIPAA-covered entity (no clinic, insurer, or business
+associate involvement) and is not designed to handle PHI. HIPAA is therefore
+out of strict scope. However, choice voluntarily aligns with the
+<strong>HIPAA Security Rule</strong> as a baseline for handling sensitive
+health information:
+</p>
+
+<table border="1">
+  <thead>
+    <tr><th>Safeguard</th><th>Implementation</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Access control</td>
+      <td>Four-digit app access code; encrypted local storage.</td>
+    </tr>
+    <tr>
+      <td>Audit controls</td>
+      <td>Local logs of data changes; no server-side telemetry.</td>
+    </tr>
+    <tr>
+      <td>Integrity</td>
+      <td>Atomic writes; checksum on encrypted blobs.</td>
+    </tr>
+    <tr>
+      <td>Transmission security</td>
+      <td>TLS 1.2+ for any cloud sync; data is already encrypted at the source.</td>
+    </tr>
+    <tr>
+      <td>Data at rest</td>
+      <td>AES-256 per-record on device and in cloud.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>4. Google Play Policies</h2>
+
+<h3>4.1 User Data Policy</h3>
+<ul>
+  <li><strong>Data Safety section</strong> will be filled in declaring:
+    no data shared, no data collected for analytics or advertising,
+    optional cloud backup encrypted in transit and at rest.</li>
+  <li><strong>Privacy policy URL</strong> will be public before release.</li>
+  <li><strong>Account deletion</strong> is exposed in-app and via the Play Store
+    requirement (in-app and web flow).</li>
+</ul>
+
+<h3>4.2 Health Apps</h3>
+<ul>
+  <li>No medical claims, diagnoses, or recommendations are provided.</li>
+  <li>Predictions are presented as informational only.</li>
+  <li>The privacy policy explicitly clarifies the non-clinical nature of the app.</li>
+</ul>
+
+<h3>4.3 Sensitive Permissions</h3>
+<p>
+choice does not request permissions that would trigger Google Play&rsquo;s
+sensitive-permissions review (no SMS, call log, accessibility services, or
+background location).
+</p>
+
+<hr />
+
+<h2>5. Other Considerations</h2>
+
+<h3>5.1 Reproductive-Rights Risk</h3>
+<p>
+Cycle tracking data has been the subject of subpoena and law-enforcement
+requests in some jurisdictions. The architectural commitment that the
+developer cannot decrypt user data is the strongest available technical
+mitigation: a subpoena cannot compel disclosure of plaintext that does not
+exist on the server.
+</p>
+
+<h3>5.2 Children</h3>
+<p>
+The app is not directed at children under 13 (or the local equivalent). If a
+minor uses the app, the privacy-by-design model still applies and no targeted
+data collection occurs.
+</p>
+
+<h3>5.3 Open Issues</h3>
+<ul>
+  <li>Confirm which Firebase regions will be used and document them in the
+    privacy policy.</li>
+  <li>Publish a short, plain-language DPIA.</li>
+  <li>Decide on the public license model before open-sourcing the client.</li>
+</ul>
+
+<hr />
+
+<h2>6. Summary</h2>
+<ul>
+  <li><strong>GDPR:</strong> covered by privacy-by-design architecture and
+    explicit, granular consent.</li>
+  <li><strong>HIPAA:</strong> not in strict scope; voluntary alignment with the
+    Security Rule.</li>
+  <li><strong>Google Play:</strong> compliant by virtue of minimal data
+    collection and explicit cloud opt-in; Data Safety section to be completed
+    before submission.</li>
+</ul>

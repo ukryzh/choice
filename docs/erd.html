@@ -1,1 +1,249 @@
+<h1>Entity-Relationship Documentation</h1>
 
+<p>
+The choice data model is intentionally narrow. Three entities are stored on
+the device; only one of them ever leaves the device, and only as ciphertext.
+</p>
+
+<h2>1. Overview Diagram</h2>
+
+<p>
+The diagram below shows entities, cardinalities, and which fields are
+encrypted before being uploaded to cloud backup.
+</p>
+
+<svg viewBox="0 0 760 460" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:Arial,Helvetica,sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#FF5F81"/>
+    </marker>
+  </defs>
+
+  <!-- UserData -->
+  <g>
+    <rect x="40" y="40" width="220" height="180" rx="12" fill="#FFE7EE" stroke="#FF5F81" stroke-width="2"/>
+    <text x="150" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">UserData</text>
+    <line x1="56" y1="82" x2="244" y2="82" stroke="#FF5F81" stroke-width="1"/>
+    <text x="60" y="106" font-size="13" fill="#222">PK  userId : string</text>
+    <text x="60" y="128" font-size="13" fill="#222">     encryptionKey : string</text>
+    <text x="60" y="150" font-size="13" fill="#222">     cloudBackupId : string?</text>
+    <text x="60" y="172" font-size="13" fill="#222">     accessCodeHash : string</text>
+    <text x="60" y="194" font-size="13" fill="#222">     googleAccountId : string?</text>
+    <text x="60" y="212" font-size="11" fill="#666">device-only · never uploaded</text>
+  </g>
+
+  <!-- CycleEntry -->
+  <g>
+    <rect x="290" y="40" width="220" height="200" rx="12" fill="#fff" stroke="#FF5F81" stroke-width="2"/>
+    <text x="400" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">CycleEntry</text>
+    <line x1="306" y1="82" x2="494" y2="82" stroke="#FF5F81" stroke-width="1"/>
+    <text x="310" y="106" font-size="13" fill="#222">PK  cycleId : string</text>
+    <text x="310" y="128" font-size="13" fill="#222">FK  userId : string</text>
+    <text x="310" y="150" font-size="13" fill="#222">     startDate : Date</text>
+    <text x="310" y="172" font-size="13" fill="#222">     endDate : Date?</text>
+    <text x="310" y="194" font-size="13" fill="#222">     notes : string?</text>
+    <text x="310" y="216" font-size="13" fill="#222">     createdAt : Timestamp</text>
+    <text x="310" y="234" font-size="11" fill="#666">encrypted before upload</text>
+  </g>
+
+  <!-- SymptomLog -->
+  <g>
+    <rect x="540" y="40" width="200" height="180" rx="12" fill="#fff" stroke="#FF5F81" stroke-width="2"/>
+    <text x="640" y="68" text-anchor="middle" font-size="16" font-weight="bold" fill="#222">SymptomLog</text>
+    <line x1="556" y1="82" x2="724" y2="82" stroke="#FF5F81" stroke-width="1"/>
+    <text x="560" y="106" font-size="13" fill="#222">PK  logId : string</text>
+    <text x="560" y="128" font-size="13" fill="#222">FK  cycleId : string</text>
+    <text x="560" y="150" font-size="13" fill="#222">     date : Date</text>
+    <text x="560" y="172" font-size="13" fill="#222">     symptoms : string[]</text>
+    <text x="560" y="194" font-size="13" fill="#222">     mood : string?</text>
+    <text x="560" y="212" font-size="11" fill="#666">encrypted before upload</text>
+  </g>
+
+  <!-- Relationships -->
+  <line x1="260" y1="130" x2="290" y2="130" stroke="#FF5F81" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="275" y="122" text-anchor="middle" font-size="11" fill="#666">1 : N</text>
+
+  <line x1="510" y1="130" x2="540" y2="130" stroke="#FF5F81" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="525" y="122" text-anchor="middle" font-size="11" fill="#666">1 : N</text>
+
+  <!-- Storage layer -->
+  <rect x="40" y="280" width="700" height="140" rx="12" fill="#fafafa" stroke="#eee" stroke-width="1"/>
+  <text x="60" y="308" font-size="14" font-weight="bold" fill="#222">Storage layers</text>
+
+  <!-- local -->
+  <rect x="60" y="330" width="320" height="70" rx="8" fill="#fff" stroke="#FF5F81" stroke-width="1"/>
+  <text x="220" y="355" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">Device · Room / SQLite</text>
+  <text x="220" y="375" text-anchor="middle" font-size="12" fill="#666">UserData · CycleEntry · SymptomLog (plaintext)</text>
+  <text x="220" y="392" text-anchor="middle" font-size="11" fill="#666">readable only by the app</text>
+
+  <!-- cloud -->
+  <rect x="400" y="330" width="320" height="70" rx="8" fill="#fff" stroke="#FF5F81" stroke-width="1"/>
+  <text x="560" y="355" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">Cloud · Firebase (opt-in)</text>
+  <text x="560" y="375" text-anchor="middle" font-size="12" fill="#666">CycleEntry · SymptomLog (AES-256 ciphertext)</text>
+  <text x="560" y="392" text-anchor="middle" font-size="11" fill="#666">server cannot decrypt</text>
+
+  <!-- arrow -->
+  <line x1="380" y1="365" x2="400" y2="365" stroke="#FF5F81" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>
+
+<hr />
+
+<h2>2. Entities</h2>
+
+<h3>2.1 UserData</h3>
+<p>
+A single per-installation record. Holds the device-side encryption key,
+the local access code hash, and an optional Google account identifier used
+only as backup identity. <strong>UserData never leaves the device.</strong>
+</p>
+
+<table border="1">
+  <thead>
+    <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>userId</code></td>
+      <td>string (PK)</td>
+      <td>UUID generated locally on first launch.</td>
+    </tr>
+    <tr>
+      <td><code>encryptionKey</code></td>
+      <td>string</td>
+      <td>AES-256 key, kept in Android Keystore. Never uploaded.</td>
+    </tr>
+    <tr>
+      <td><code>cloudBackupId</code></td>
+      <td>string?</td>
+      <td>Opaque identifier used to address the user&rsquo;s ciphertext bucket.</td>
+    </tr>
+    <tr>
+      <td><code>accessCodeHash</code></td>
+      <td>string</td>
+      <td>Salted hash of the four-digit app access code.</td>
+    </tr>
+    <tr>
+      <td><code>googleAccountId</code></td>
+      <td>string?</td>
+      <td>Only present if the user opted into Google Sign-In for backup.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2.2 CycleEntry</h3>
+<p>
+One row per logged cycle. Encrypted per-record before upload.
+</p>
+
+<table border="1">
+  <thead>
+    <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>cycleId</code></td>
+      <td>string (PK)</td>
+      <td>UUID, generated locally.</td>
+    </tr>
+    <tr>
+      <td><code>userId</code></td>
+      <td>string (FK)</td>
+      <td>References <code>UserData.userId</code>.</td>
+    </tr>
+    <tr>
+      <td><code>startDate</code></td>
+      <td>Date</td>
+      <td>Required.</td>
+    </tr>
+    <tr>
+      <td><code>endDate</code></td>
+      <td>Date?</td>
+      <td>Optional — open cycles are allowed.</td>
+    </tr>
+    <tr>
+      <td><code>notes</code></td>
+      <td>string?</td>
+      <td>Free-form, optional.</td>
+    </tr>
+    <tr>
+      <td><code>createdAt</code></td>
+      <td>Timestamp</td>
+      <td>For ordering and conflict resolution.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>2.3 SymptomLog</h3>
+<p>
+A symptom record for a specific day within a cycle. Encrypted per-record
+before upload.
+</p>
+
+<table border="1">
+  <thead>
+    <tr><th>Field</th><th>Type</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>logId</code></td>
+      <td>string (PK)</td>
+      <td>UUID.</td>
+    </tr>
+    <tr>
+      <td><code>cycleId</code></td>
+      <td>string (FK)</td>
+      <td>References <code>CycleEntry.cycleId</code>.</td>
+    </tr>
+    <tr>
+      <td><code>date</code></td>
+      <td>Date</td>
+      <td>The day the symptoms apply to.</td>
+    </tr>
+    <tr>
+      <td><code>symptoms</code></td>
+      <td>string[]</td>
+      <td>List of tag-like values (e.g. cramps, headache, fatigue).</td>
+    </tr>
+    <tr>
+      <td><code>mood</code></td>
+      <td>string?</td>
+      <td>Optional mood label.</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>3. Relationships</h2>
+
+<ul>
+  <li><strong>UserData &rarr; CycleEntry:</strong> 1 : N. Each user owns many cycles.</li>
+  <li><strong>CycleEntry &rarr; SymptomLog:</strong> 1 : N. Each cycle can have
+    many symptom entries — typically one per day.</li>
+</ul>
+
+<h2>4. Encryption Boundary</h2>
+
+<p>
+Plaintext records exist only inside the application&rsquo;s sandbox on the
+device. Anything that crosses to Firebase is wrapped in AES-256 ciphertext
+keyed by <code>UserData.encryptionKey</code>. The cloud sees only:
+</p>
+
+<ul>
+  <li><code>cloudBackupId</code> — an opaque address</li>
+  <li>A ciphertext blob per record</li>
+  <li>Metadata required for sync (record id, version)</li>
+</ul>
+
+<p>
+There is no cloud-side equivalent of <code>UserData</code>: the credentials
+that make decryption possible never leave the device.
+</p>
+
+<h2>5. Out of Model</h2>
+<ul>
+  <li>No analytics events.</li>
+  <li>No advertising identifiers.</li>
+  <li>No location, contacts, or device-fingerprinting fields.</li>
+</ul>

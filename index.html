@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Choice — App Case</title>
+  <title>choice — privacy-first menstrual cycle tracker</title>
+  <meta name="description" content="choice is a privacy-first Android app for menstrual cycle tracking. Local storage, end-to-end encryption, no analytics, no ads, no data resale." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="choice — privacy-first menstrual cycle tracker" />
+  <meta property="og:description" content="Track your cycle without giving away your data. Local-first, end-to-end encrypted, no ads, no analytics." />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon (inline emoji) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B8%3C/text%3E%3C/svg%3E" />
 
   <style>
     :root {
       --main-color: #FF5F81;
+      --main-soft: #FFE7EE;
       --bg-color: #ffffff;
       --text-color: #222;
       --muted: #666;
+      --border: #eee;
     }
 
     * {
@@ -20,15 +31,15 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
-    html, body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
 
     body {
       background: var(--bg-color);
       color: var(--text-color);
       line-height: 1.6;
     }
+
+    a { color: var(--main-color); }
 
     /* ===== Layout ===== */
     .page {
@@ -37,16 +48,14 @@
       flex-direction: column;
     }
 
-    main {
-      flex: 1;
-    }
+    main { flex: 1; }
 
     /* ===== Header ===== */
     header {
       position: sticky;
       top: 0;
       background: #fff;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border);
       z-index: 1000;
     }
 
@@ -66,9 +75,7 @@
       cursor: pointer;
     }
 
-    nav .logo:hover {
-      color: var(--text-color);
-    }
+    nav .logo:hover { color: var(--text-color); }
 
     nav ul {
       list-style: none;
@@ -81,7 +88,8 @@
       font-weight: 500;
     }
 
-    nav ul li:hover {
+    nav ul li:hover,
+    nav ul li.active {
       color: var(--main-color);
     }
 
@@ -93,16 +101,176 @@
       padding: 60px 16px;
     }
 
-    section.active {
-      display: block;
+    section.active { display: block; }
+
+    h1, h2, h3 { margin-bottom: 16px; }
+
+    .muted { color: var(--muted); }
+
+    /* ===== Hero ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
     }
 
-    h1, h2, h3 {
-      margin-bottom: 16px;
+    .hero h1 {
+      font-size: 44px;
+      line-height: 1.15;
+      margin-bottom: 20px;
     }
 
-    .muted {
+    .hero h1 .accent { color: var(--main-color); }
+
+    .hero p.lead {
+      font-size: 18px;
       color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      font-size: 15px;
+    }
+
+    .btn-primary {
+      background: var(--main-color);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #e84e70; }
+
+    .btn-ghost {
+      background: #fff;
+      color: var(--main-color);
+      border-color: var(--main-color);
+    }
+    .btn-ghost:hover { background: var(--main-soft); }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge {
+      background: var(--main-soft);
+      color: var(--main-color);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, var(--main-soft) 0%, #fff 100%);
+      border-radius: 24px;
+      padding: 28px 20px;
+      text-align: center;
+    }
+    .hero-card img {
+      max-width: 240px;
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto 12px;
+    }
+    .hero-card h3 {
+      color: var(--main-color);
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+    .hero-card p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* ===== Feature grid ===== */
+    .features {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .feature .icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .feature h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+    .feature p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* ===== Case study ===== */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .case-card {
+      border-left: 4px solid var(--main-color);
+      padding: 4px 0 4px 18px;
+    }
+    .case-card h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+    .case-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .timeline {
+      margin-top: 32px;
+      border-left: 2px solid var(--border);
+      padding-left: 20px;
+    }
+    .timeline-item {
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -27px;
+      top: 6px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--main-color);
+    }
+    .timeline-item h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+    .timeline-item p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
     }
 
     /* ===== Docs ===== */
@@ -113,13 +281,11 @@
     }
 
     .docs-menu {
-      border-right: 1px solid #eee;
+      border-right: 1px solid var(--border);
       padding-right: 16px;
     }
 
-    .docs-menu ul {
-      list-style: none;
-    }
+    .docs-menu ul { list-style: none; }
 
     .docs-menu li {
       padding: 10px 0;
@@ -133,55 +299,67 @@
       font-weight: bold;
     }
 
-    .docs-content img {
-      max-width: 100%;
-      margin: 16px 0;
+    .docs-menu li.disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
     }
 
-    .docs-content h1 {
-      font-size: 32px;
-      margin-bottom: 24px;
-    }
-    
-    .docs-content h2 {
-      font-size: 24px;
-      margin-top: 40px;
-      margin-bottom: 16px;
-    }
-    
-    .docs-content h3 {
-      font-size: 18px;
-      margin-top: 32px;
-      margin-bottom: 12px;
-    }
-    
-    .docs-content p {
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
-    
-    .docs-content ul {
-      margin-left: 20px;
-      margin-bottom: 16px;
-    }
-    
-    .docs-content li {
-      margin-bottom: 8px;
-    }
-    
+    .docs-content img { max-width: 100%; margin: 16px 0; }
+    .docs-content h1 { font-size: 32px; margin-bottom: 24px; }
+    .docs-content h2 { font-size: 24px; margin-top: 40px; margin-bottom: 16px; }
+    .docs-content h3 { font-size: 18px; margin-top: 32px; margin-bottom: 12px; }
+    .docs-content p { margin-bottom: 16px; line-height: 1.7; }
+    .docs-content ul { margin-left: 20px; margin-bottom: 16px; }
+    .docs-content li { margin-bottom: 8px; }
     .docs-content blockquote {
       margin: 24px 0;
       padding-left: 16px;
       border-left: 4px solid var(--main-color);
       color: var(--muted);
     }
+    .docs-content table {
+      border-collapse: collapse;
+      margin: 16px 0;
+      width: 100%;
+    }
+    .docs-content th,
+    .docs-content td {
+      border: 1px solid var(--border);
+      padding: 8px 12px;
+      text-align: left;
+    }
+    .docs-content th {
+      background: var(--main-soft);
+      color: var(--text-color);
+    }
 
+    /* ===== Code section ===== */
+    .code-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .code-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .code-card h3 { font-size: 17px; margin-bottom: 8px; }
+    .code-card p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+    .stack-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
 
     /* ===== Footer ===== */
     footer {
       background: #fafafa;
-      border-top: 1px solid #eee;
+      border-top: 1px solid var(--border);
       padding: 40px 16px;
+      margin-top: 40px;
     }
 
     .footer-inner {
@@ -192,20 +370,41 @@
       gap: 24px;
     }
 
+    footer h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
     footer a {
       color: var(--main-color);
       text-decoration: none;
     }
+    footer a:hover { text-decoration: underline; }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 32px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
     /* ===== Responsive ===== */
     @media (max-width: 768px) {
-      .docs-container {
-        grid-template-columns: 1fr;
-      }
-
+      .hero { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+      .docs-container { grid-template-columns: 1fr; }
       .docs-menu {
         border-right: none;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid var(--border);
         padding-bottom: 16px;
       }
     }
@@ -217,51 +416,195 @@
 
   <header>
     <nav>
-      <div class="logo" onclick="showSection('choice')">choice</div>
+      <div class="logo" onclick="showSection('choice', this)">choice</div>
       <ul>
-        <li onclick="showSection('case')">case</li>
-        <li onclick="showSection('docs')">docs</li>
-        <li onclick="showSection('code')">code</li>
+        <li onclick="showSection('case', this)">case</li>
+        <li onclick="showSection('docs', this)">docs</li>
+        <li onclick="showSection('code', this)">code</li>
       </ul>
     </nav>
   </header>
 
   <main>
 
+    <!-- ===== HERO / PRODUCT ===== -->
     <section id="choice" class="active">
-      <h1>choice - приложение для ...</h1>
-      <p class="muted">Краткое описание продукта, value proposition и ключевые фичи.</p>
-    </section>
+      <div class="hero">
+        <div>
+          <div class="badges" style="margin-bottom: 16px;">
+            <span class="badge">Privacy-first</span>
+            <span class="badge">End-to-end encrypted</span>
+            <span class="badge">Android · MVP</span>
+          </div>
+          <h1>Track your cycle.<br /><span class="accent">Keep your data.</span></h1>
+          <p class="lead">
+            choice is a privacy-first menstrual cycle tracker for Android.
+            Your cycle data lives on your device, encrypted before it ever
+            leaves it. No ads. No analytics. No data resale.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#" onclick="showSection('case', document.querySelectorAll('nav ul li')[0]); return false;">See the case study</a>
+            <a class="btn btn-ghost" href="https://github.com/ukryzh/choice" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+          <p class="muted" style="font-size: 13px;">APK and Google Play release coming soon.</p>
+        </div>
 
-    <section id="case">
-      <h1>Case study</h1>
-      <p class="muted">Подробный разбор процесса разработки продукта.</p>
-    </section>
+        <div class="hero-card">
+          <img src="assets/phone-mockup.svg" alt="choice app calendar screen with current cycle highlighted in pink" />
+          <h3>Your data is yours.</h3>
+          <p>Local-first storage. Optional encrypted cloud backup. The server never sees your cycle.</p>
+        </div>
+      </div>
 
-    <section id="docs">
-      <h1>Documentation</h1>
-      <div class="docs-container">
-        <aside class="docs-menu">
-          <ul>
-            <li class="active" onclick="loadDoc(event, 'marketing')">Marketing research document</li>
-            <li onclick="loadDoc(event, 'scope')">Scope & Vision</li>
-            <li onclick="loadDoc(event, 'prd')">Product requirement document</li>
-            <li onclick="loadDoc(event, 'brd')">Business requirements document</li>
-            <li onclick="loadDoc(event, 'regulatory')">Regulatory compliance analysis</li>
-            <li onclick="loadDoc(event, 'srs')">Software requirements specification</li>
-            <li onclick="loadDoc(event, 'erd')">Entity relationship documentation</li>
-          </ul>
-        </aside>
-
-        <div class="docs-content" id="docsContent">
-          <p class="muted">Select document on the left</p>
+      <!-- Features -->
+      <div class="features">
+        <div class="feature">
+          <div class="icon">🗓️</div>
+          <h3>Cycle tracking</h3>
+          <p>Log periods, view history in a calendar, and see predictions for the next cycle.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🔒</div>
+          <h3>Client-side encryption</h3>
+          <p>Per-record AES-256 encryption. The encryption key never leaves the device.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">☁️</div>
+          <h3>Optional backup</h3>
+          <p>Encrypted cloud backup is strictly opt-in. You can delete it any time.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">📱</div>
+          <h3>Multi-device recovery</h3>
+          <p>Restore your data on a new device — only you can decrypt it.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🌿</div>
+          <h3>Symptom log</h3>
+          <p>Attach symptoms to specific days. Edit or delete any entry, any time.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🚫</div>
+          <h3>No tracking</h3>
+          <p>No ads, no analytics SDKs, no third-party trackers. Privacy by Design and Default.</p>
         </div>
       </div>
     </section>
 
+    <!-- ===== CASE STUDY ===== -->
+    <section id="case">
+      <h1>Case study</h1>
+      <p class="muted" style="max-width: 720px;">
+        How choice was built — from a market gap in FemTech to a working
+        privacy-first MVP, designed and shipped solo.
+      </p>
+
+      <div class="case-grid">
+        <div class="case-card">
+          <h3>Problem</h3>
+          <p>Most cycle trackers monetize the most intimate kind of personal data — selling, sharing, or analyzing it. Users have no real opt-out.</p>
+        </div>
+        <div class="case-card">
+          <h3>Insight</h3>
+          <p>Privacy is usually declared, not enforced. Users compromise because there is no real alternative — not because they don't care.</p>
+        </div>
+        <div class="case-card">
+          <h3>Approach</h3>
+          <p>Privacy by Design: local-first storage, per-record AES-256 encryption, no analytics, no ads, opt-in encrypted cloud backups.</p>
+        </div>
+        <div class="case-card">
+          <h3>Outcome</h3>
+          <p>An Android MVP with cycle logging, history, predictions, symptoms, encrypted backups, and cross-device data recovery.</p>
+        </div>
+      </div>
+
+      <h2 style="margin-top: 48px;">Process</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>1. Market research</h4>
+          <p>Audit of Flo, Clue, Period Tracker, WomanLog, Maya privacy policies. Confirmed market gap: no mainstream cycle tracker treats privacy as a hard constraint.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>2. Scope &amp; vision</h4>
+          <p>MVP defined as: cycle &amp; symptom tracking, history, predictions, encrypted cloud backup, recovery on new device. Monetization, analytics and clinical claims explicitly out of scope.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>3. Architecture</h4>
+          <p>Client–server split where the server only ever sees encrypted blobs. Per-record AES-256 encryption. Encryption key derived on the device and never uploaded.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>4. Implementation</h4>
+          <p>Android client with local SQLite/Room storage. Firebase used as a "blind" backend — encrypted JSON only. Optional Google sign-in is for cloud backup identity, not data access.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>5. Compliance</h4>
+          <p>GDPR-aligned by construction: minimal data, user-controlled deletion, transparent privacy story, no third-party data sharing.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>6. Next</h4>
+          <p>Beta testing with real users, UX polish, prediction tuning, and Google Play release.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DOCS ===== -->
+    <section id="docs">
+      <h1>Documentation</h1>
+      <p class="muted" style="max-width: 720px; margin-bottom: 24px;">
+        The full product paper trail — from market research to the SRS.
+      </p>
+      <div class="docs-container">
+        <aside class="docs-menu">
+          <ul>
+            <li class="active" onclick="loadDoc(event, 'marketing')">Market research</li>
+            <li onclick="loadDoc(event, 'scope')">Scope &amp; Vision</li>
+            <li onclick="loadDoc(event, 'prd')">Product Requirements (PRD)</li>
+            <li onclick="loadDoc(event, 'brd')">Business Requirements (BRD)</li>
+            <li onclick="loadDoc(event, 'srs')">Software Requirements (SRS)</li>
+            <li class="disabled" title="Coming soon">Regulatory compliance · soon</li>
+            <li class="disabled" title="Coming soon">Entity-relationship diagram · soon</li>
+          </ul>
+        </aside>
+
+        <div class="docs-content" id="docsContent">
+          <p class="muted">Select a document on the left.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CODE ===== -->
     <section id="code">
       <h1>Source code</h1>
-      <a href="https://github.com/your-repo" target="_blank">GitHub Repository</a>
+      <p class="muted" style="max-width: 720px;">
+        choice is open about how it works. Documentation lives in this repo;
+        the Android client will be open-sourced as it stabilizes.
+      </p>
+
+      <div class="code-grid">
+        <div class="code-card">
+          <h3>📄 Documentation repository</h3>
+          <p>All product docs (BRD, PRD, SRS, scope, market research) are versioned alongside the landing page.</p>
+          <a class="btn btn-primary" href="https://github.com/ukryzh/choice" target="_blank" rel="noopener">github.com/ukryzh/choice</a>
+        </div>
+
+        <div class="code-card">
+          <h3>🛠 Tech stack</h3>
+          <p>What the Android client is built on.</p>
+          <div class="stack-list">
+            <span class="badge">Android</span>
+            <span class="badge">Kotlin</span>
+            <span class="badge">Room / SQLite</span>
+            <span class="badge">AES-256</span>
+            <span class="badge">Firebase (encrypted blobs)</span>
+          </div>
+        </div>
+
+        <div class="code-card">
+          <h3>🔐 Security model</h3>
+          <p>Per-record client-side encryption. The server stores ciphertext only. Encryption keys never leave the device.</p>
+          <a href="#" onclick="loadDoc({target:document.querySelectorAll('.docs-menu li')[4]}, 'srs'); showSection('docs', document.querySelectorAll('nav ul li')[1]); return false;">Read the SRS →</a>
+        </div>
+      </div>
     </section>
 
   </main>
@@ -269,34 +612,49 @@
   <footer>
     <div class="footer-inner">
       <div>
-        <h3>Contacts</h3>
-        <p>Email: <a href="mailto:your@email.com">choice.period@gmail.com</a></p>
+        <h3>Contact</h3>
+        <p><a href="mailto:choice.period@gmail.com">choice.period@gmail.com</a></p>
       </div>
       <div>
-        <h3>Download</h3>
-        <p><a href="#">APK</a></p>
-        <p><a href="#">Google Play Store</a></p>
+        <h3>Get the app</h3>
+        <p><span class="muted">APK · coming soon</span></p>
+        <p><span class="muted">Google Play · coming soon</span></p>
       </div>
       <div>
-        <h3>Social Media</h3>
-        <p><a href="#">LinkedIn</a></p>
-        <p><a href="#">Medium</a></p>
-        <p><a href="#">Habr</a></p>
+        <h3>Project</h3>
+        <p><a href="https://github.com/ukryzh/choice" target="_blank" rel="noopener">GitHub</a></p>
+        <p><span class="muted">LinkedIn · soon</span></p>
+        <p><span class="muted">Medium · soon</span></p>
       </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> choice — privacy-first cycle tracker</span>
+      <span>Made with care · No tracking on this site</span>
     </div>
   </footer>
 
 </div>
 
 <script>
-  function showSection(id) {
+  // === Tab navigation ===
+  function showSection(id, navEl) {
     document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
     document.getElementById(id).classList.add('active');
+
+    // highlight active nav item
+    document.querySelectorAll('nav ul li').forEach(li => li.classList.remove('active'));
+    if (navEl && navEl.tagName === 'LI') navEl.classList.add('active');
+
+    // scroll to top of section
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // === Docs loader ===
   function loadDoc(event, name) {
     document.querySelectorAll('.docs-menu li').forEach(li => li.classList.remove('active'));
-    event.target.classList.add('active');
+    if (event && event.target && !event.target.classList.contains('disabled')) {
+      event.target.classList.add('active');
+    }
 
     fetch(`docs/${name}.html`)
       .then(res => res.ok ? res.text() : Promise.reject())
@@ -304,9 +662,23 @@
         document.getElementById('docsContent').innerHTML = html;
       })
       .catch(() => {
-        document.getElementById('docsContent').innerHTML = '<p class="muted">Документ не найден</p>';
+        document.getElementById('docsContent').innerHTML = '<p class="muted">Document not found.</p>';
       });
   }
+
+  // Auto-load first doc when entering docs tab for the first time
+  let docsLoadedOnce = false;
+  document.querySelectorAll('nav ul li').forEach((li, idx) => {
+    li.addEventListener('click', () => {
+      if (idx === 1 && !docsLoadedOnce) {
+        docsLoadedOnce = true;
+        loadDoc({ target: document.querySelector('.docs-menu li.active') }, 'marketing');
+      }
+    });
+  });
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 
 </body>

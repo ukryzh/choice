@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 600" role="img" aria-label="choice app screen mockup">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE7EE"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-10%" width="140%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- Phone frame -->
+  <g filter="url(#shadow)">
+    <rect x="20" y="20" width="280" height="560" rx="36" ry="36" fill="#1a1a1a"/>
+    <rect x="28" y="28" width="264" height="544" rx="30" ry="30" fill="url(#bg)"/>
+  </g>
+
+  <!-- Notch -->
+  <rect x="125" y="36" width="70" height="14" rx="7" fill="#1a1a1a"/>
+
+  <!-- Status bar -->
+  <text x="48" y="76" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" font-weight="bold">9:41</text>
+  <g fill="#222">
+    <rect x="232" y="68" width="16" height="9" rx="1.5"/>
+    <rect x="252" y="68" width="20" height="9" rx="2"/>
+    <rect x="270" y="70" width="2" height="5" fill="#fff"/>
+  </g>
+
+  <!-- App header -->
+  <text x="48" y="112" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#FF5F81" font-weight="bold">choice</text>
+  <text x="48" y="132" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666">December 2025</text>
+
+  <!-- Calendar header -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#666" text-anchor="middle">
+    <text x="56"  y="170">Mon</text>
+    <text x="88"  y="170">Tue</text>
+    <text x="120" y="170">Wed</text>
+    <text x="152" y="170">Thu</text>
+    <text x="184" y="170">Fri</text>
+    <text x="216" y="170">Sat</text>
+    <text x="248" y="170">Sun</text>
+  </g>
+
+  <!-- Calendar grid -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#222" text-anchor="middle">
+    <!-- Row 1: 1-7 (Dec 8-14 highlighted as period) -->
+    <text x="56"  y="195">1</text>
+    <text x="88"  y="195">2</text>
+    <text x="120" y="195">3</text>
+    <text x="152" y="195">4</text>
+    <text x="184" y="195">5</text>
+    <text x="216" y="195">6</text>
+    <text x="248" y="195">7</text>
+
+    <!-- Row 2: 8-14 (period: 12-16) -->
+    <circle cx="56"  cy="222" r="14" fill="none"/>
+    <text x="56"  y="226">8</text>
+    <text x="88"  y="226">9</text>
+    <text x="120" y="226">10</text>
+    <text x="152" y="226">11</text>
+
+    <!-- period highlight days 12-14 -->
+    <circle cx="184" cy="222" r="14" fill="#FF5F81"/>
+    <text x="184" y="226" fill="#fff" font-weight="bold">12</text>
+    <circle cx="216" cy="222" r="14" fill="#FF5F81"/>
+    <text x="216" y="226" fill="#fff" font-weight="bold">13</text>
+    <circle cx="248" cy="222" r="14" fill="#FF5F81"/>
+    <text x="248" y="226" fill="#fff" font-weight="bold">14</text>
+
+    <!-- Row 3: 15-21 -->
+    <circle cx="56"  cy="254" r="14" fill="#FF5F81"/>
+    <text x="56"  y="258" fill="#fff" font-weight="bold">15</text>
+    <circle cx="88"  cy="254" r="14" fill="#FF5F81"/>
+    <text x="88"  y="258" fill="#fff" font-weight="bold">16</text>
+    <text x="120" y="258">17</text>
+    <text x="152" y="258">18</text>
+    <text x="184" y="258">19</text>
+    <text x="216" y="258">20</text>
+    <text x="248" y="258">21</text>
+
+    <!-- Row 4: 22-28 -->
+    <text x="56"  y="290">22</text>
+    <text x="88"  y="290">23</text>
+    <text x="120" y="290">24</text>
+    <text x="152" y="290">25</text>
+    <text x="184" y="290">26</text>
+    <text x="216" y="290">27</text>
+    <text x="248" y="290">28</text>
+
+    <!-- Row 5: 29-31 + predicted next cycle -->
+    <text x="56"  y="322">29</text>
+    <text x="88"  y="322">30</text>
+    <text x="120" y="322">31</text>
+    <!-- Predicted (dashed circles) -->
+    <circle cx="152" cy="318" r="13" fill="none" stroke="#FF5F81" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="152" y="322" fill="#FF5F81">1</text>
+    <circle cx="184" cy="318" r="13" fill="none" stroke="#FF5F81" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="184" y="322" fill="#FF5F81">2</text>
+    <circle cx="216" cy="318" r="13" fill="none" stroke="#FF5F81" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="216" y="322" fill="#FF5F81">3</text>
+    <circle cx="248" cy="318" r="13" fill="none" stroke="#FF5F81" stroke-width="1.5" stroke-dasharray="3,2"/>
+    <text x="248" y="322" fill="#FF5F81">4</text>
+  </g>
+
+  <!-- Cycle summary card -->
+  <rect x="40" y="350" width="240" height="80" rx="14" fill="#fff" stroke="#FFE7EE" stroke-width="1.5"/>
+  <text x="56" y="374" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#666">Current cycle</text>
+  <text x="56" y="394" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#222" font-weight="bold">Day 5</text>
+  <text x="56" y="414" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#FF5F81">Next predicted: Jan 1</text>
+  <!-- Lock icon -->
+  <g transform="translate(232,360)">
+    <rect x="0" y="6" width="32" height="22" rx="5" fill="#FFE7EE"/>
+    <path d="M6 6 v-3 a10 10 0 0 1 20 0 v3" fill="none" stroke="#FF5F81" stroke-width="2"/>
+    <circle cx="16" cy="17" r="2" fill="#FF5F81"/>
+  </g>
+
+  <!-- Log period button -->
+  <rect x="40" y="450" width="240" height="44" rx="22" fill="#FF5F81"/>
+  <text x="160" y="478" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">+ Log period</text>
+
+  <!-- Bottom nav -->
+  <line x1="40" y1="520" x2="280" y2="520" stroke="#FFE7EE" stroke-width="1"/>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="9" text-anchor="middle">
+    <!-- calendar -->
+    <rect x="64" y="528" width="14" height="14" rx="2" fill="none" stroke="#FF5F81" stroke-width="1.5"/>
+    <line x1="64" y1="534" x2="78" y2="534" stroke="#FF5F81" stroke-width="1.5"/>
+    <text x="71" y="558" fill="#FF5F81" font-weight="bold">Calendar</text>
+
+    <!-- history -->
+    <circle cx="135" cy="535" r="7" fill="none" stroke="#666" stroke-width="1.5"/>
+    <line x1="135" y1="535" x2="135" y2="531" stroke="#666" stroke-width="1.5"/>
+    <line x1="135" y1="535" x2="139" y2="537" stroke="#666" stroke-width="1.5"/>
+    <text x="135" y="558" fill="#666">History</text>
+
+    <!-- symptoms -->
+    <path d="M195 540 q-6 -8 0 -10 q6 2 0 10 z" fill="none" stroke="#666" stroke-width="1.5"/>
+    <text x="195" y="558" fill="#666">Symptoms</text>
+
+    <!-- profile -->
+    <circle cx="255" cy="533" r="3" fill="none" stroke="#666" stroke-width="1.5"/>
+    <path d="M249 542 q6 -6 12 0" fill="none" stroke="#666" stroke-width="1.5"/>
+    <text x="255" y="558" fill="#666">Profile</text>
+  </g>
+</svg>
