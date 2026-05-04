@@ -72,7 +72,7 @@ encrypted before being uploaded to cloud backup.
 
   <!-- local -->
   <rect x="60" y="330" width="320" height="70" rx="8" fill="#fff" stroke="#FF5F81" stroke-width="1"/>
-  <text x="220" y="355" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">Device · Room / SQLite</text>
+  <text x="220" y="355" text-anchor="middle" font-size="13" font-weight="bold" fill="#222">Device · Flutter (Hive / Isar)</text>
   <text x="220" y="375" text-anchor="middle" font-size="12" fill="#666">UserData · CycleEntry · SymptomLog (plaintext)</text>
   <text x="220" y="392" text-anchor="middle" font-size="11" fill="#666">readable only by the app</text>
 
@@ -110,7 +110,7 @@ only as backup identity. <strong>UserData never leaves the device.</strong>
     <tr>
       <td><code>encryptionKey</code></td>
       <td>string</td>
-      <td>AES-256 key, kept in Android Keystore. Never uploaded.</td>
+      <td>AES-256 key, kept in the platform secure store (Android Keystore / iOS Keychain). Never uploaded.</td>
     </tr>
     <tr>
       <td><code>cloudBackupId</code></td>
