@@ -42,10 +42,11 @@ See [docs/srs.html](./docs/srs.html) for the security model and [docs/regulatory
 
 | Layer | Choice |
 |------|--------|
-| Platform | Android |
-| Language | Kotlin |
-| Local storage | Room / SQLite |
-| Encryption | AES-256, per-record |
+| Framework | Flutter |
+| Language | Dart |
+| Platforms | Android (initial release), iOS (roadmap) |
+| Local storage | Hive / Isar |
+| Encryption | AES-256 per-record · key in platform Keystore / Keychain |
 | Cloud backup | Firebase (encrypted blobs only) |
 | Auth (optional) | Google Sign-In, used for backup identity only |
 
@@ -63,7 +64,7 @@ The full product paper trail lives under [`/docs`](./docs):
 
 ## Status
 
-**MVP — pre-release.** APK and Google Play release coming soon. The Android client will be open-sourced as it stabilizes.
+**MVP — pre-release.** APK and Google Play release coming soon. The Flutter client will be open-sourced as it stabilizes; iOS comes after Android.
 
 ## Roadmap
 
@@ -75,8 +76,8 @@ The full product paper trail lives under [`/docs`](./docs):
 - [x] Cross-device recovery
 - [ ] Closed beta
 - [ ] Google Play release
-- [ ] Open-sourcing the Android client
-- [ ] iOS
+- [ ] Open-sourcing the Flutter client
+- [ ] iOS release
 
 ## Repository structure
 

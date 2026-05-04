@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>choice — privacy-first menstrual cycle tracker</title>
-  <meta name="description" content="choice is a privacy-first Android app for menstrual cycle tracking. Local storage, end-to-end encryption, no analytics, no ads, no data resale." />
+  <meta name="description" content="choice is a privacy-first menstrual cycle tracker. Built in Flutter, Android-first. Local storage, end-to-end encryption, no analytics, no ads, no data resale." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="choice — privacy-first menstrual cycle tracker" />
@@ -434,7 +434,7 @@
           <div class="badges" style="margin-bottom: 16px;">
             <span class="badge">Privacy-first</span>
             <span class="badge">End-to-end encrypted</span>
-            <span class="badge">Android · MVP</span>
+            <span class="badge">Flutter · Android MVP</span>
           </div>
           <h1>Track your cycle.<br /><span class="accent">Keep your data.</span></h1>
           <p class="lead">
@@ -534,7 +534,7 @@
         </div>
         <div class="timeline-item">
           <h4>4. Implementation</h4>
-          <p>Android client with local SQLite/Room storage. Firebase used as a "blind" backend — encrypted JSON only. Optional Google sign-in is for cloud backup identity, not data access.</p>
+          <p>Flutter client with local Hive / Isar storage. Firebase used as a "blind" backend — encrypted JSON only. Optional Google sign-in is for cloud backup identity, not data access.</p>
         </div>
         <div class="timeline-item">
           <h4>5. Compliance</h4>
@@ -577,7 +577,7 @@
       <h1>Source code</h1>
       <p class="muted" style="max-width: 720px;">
         choice is open about how it works. Documentation lives in this repo;
-        the Android client will be open-sourced as it stabilizes.
+        the Flutter client will be open-sourced as it stabilizes.
       </p>
 
       <div class="code-grid">
@@ -589,12 +589,12 @@
 
         <div class="code-card">
           <h3>🛠 Tech stack</h3>
-          <p>What the Android client is built on.</p>
+          <p>What the client is built on. Cross-platform from day one — Android first, iOS in roadmap.</p>
           <div class="stack-list">
-            <span class="badge">Android</span>
-            <span class="badge">Kotlin</span>
-            <span class="badge">Room / SQLite</span>
-            <span class="badge">AES-256</span>
+            <span class="badge">Flutter</span>
+            <span class="badge">Dart</span>
+            <span class="badge">Hive / Isar</span>
+            <span class="badge">AES-256 + Keystore</span>
             <span class="badge">Firebase (encrypted blobs)</span>
           </div>
         </div>
