@@ -1,8 +1,8 @@
-<h2>Product Requirements Document</h2>
+<h1>Product Requirements Document</h1>
 
-<h3>1. Overview</h3>
+<h2>1. Overview</h2>
 
-<h4>1.1 Purpose</h4>
+<h3>1.1 Purpose</h3>
 <p>
 This document defines the product requirements for a mobile menstrual cycle
 tracking application with a strong focus on data privacy and secure data
@@ -17,14 +17,14 @@ portability between user devices.
   <li>MVP readiness criteria</li>
 </ul>
 
-<h4>1.2 Product Vision</h4>
+<h3>1.2 Product Vision</h3>
 <p>
 To create a privacy-first menstrual cycle tracking application in which users
 have full control over their data — including storage, transfer, and deletion —
 while the developer has no access to the data content.
 </p>
 
-<h4>1.3 In Scope (MVP)</h4>
+<h3>1.3 In Scope (MVP)</h3>
 <ul>
   <li>Menstrual cycle tracking</li>
   <li>Cycle history and predictions</li>
@@ -34,7 +34,7 @@ while the developer has no access to the data content.
   <li>Data recovery on a new device</li>
 </ul>
 
-<h4>1.4 Out of Scope</h4>
+<h3>1.4 Out of Scope</h3>
 <ul>
   <li>Monetization</li>
   <li>Analytics and tracking</li>
@@ -44,16 +44,16 @@ while the developer has no access to the data content.
 
 <hr />
 
-<h3>2. User Personas</h3>
+<h2>2. User Personas</h2>
 
-<h4>Persona 1: Privacy-Conscious User</h4>
+<h3>Persona 1: Privacy-Conscious User</h3>
 <ul>
   <li>Does not trust mass-market health applications</li>
   <li>Is concerned about personal data leaks</li>
   <li>Prefers a simple and transparent interface</li>
 </ul>
 
-<h4>Persona 2: Device-Switching User</h4>
+<h3>Persona 2: Device-Switching User</h3>
 <ul>
   <li>Frequently changes devices</li>
   <li>Fears losing personal data</li>
@@ -62,23 +62,23 @@ while the developer has no access to the data content.
 
 <hr />
 
-<h3>3. Design & Privacy Principles</h3>
+<h2>3. Design & Privacy Principles</h2>
 
-<h4>3.1 Privacy First</h4>
+<h3>3.1 Privacy First</h3>
 <ul>
   <li>All data belongs exclusively to the user</li>
   <li>All data is encrypted before being sent to the server</li>
   <li>The server has no access to decrypted user data</li>
 </ul>
 
-<h4>3.2 User Control</h4>
+<h3>3.2 User Control</h3>
 <ul>
   <li>Cloud storage is strictly opt-in</li>
   <li>Users can delete their data at any time</li>
   <li>The application works without registration</li>
 </ul>
 
-<h4>3.3 Simplicity</h4>
+<h3>3.3 Simplicity</h3>
 <ul>
   <li>Minimal number of screens</li>
   <li>Clear and understandable language</li>
@@ -87,9 +87,9 @@ while the developer has no access to the data content.
 
 <hr />
 
-<h3>4. User Journeys</h3>
+<h2>4. User Journeys</h2>
 
-<h4>4.1 First App Launch</h4>
+<h3>4.1 First App Launch</h3>
 
 <p><strong>Description:</strong><br />
 The user opens the application for the first time.
@@ -117,7 +117,7 @@ The user opens the application for the first time.
 
 <hr />
 
-<h4>4.2 Adding a Cycle</h4>
+<h3>4.2 Adding a Cycle</h3>
 
 <p><strong>User Story:</strong><br />
 As a user, I want to add the start date of my cycle so that I can track regularity.
@@ -146,7 +146,7 @@ As a user, I want to add the start date of my cycle so that I can track regulari
 
 <hr />
 
-<h4>4.3 Viewing History and Predictions</h4>
+<h3>4.3 Viewing History and Predictions</h3>
 
 <p><strong>User Story:</strong><br />
 As a user, I want to see past cycles and upcoming predictions to plan my activity.
@@ -166,7 +166,7 @@ As a user, I want to see past cycles and upcoming predictions to plan my activit
 
 <hr />
 
-<h4>4.4 Symptom Logging</h4>
+<h3>4.4 Symptom Logging</h3>
 
 <p><strong>User Story:</strong><br />
 As a user, I want to log symptoms for a specific day of my cycle.
@@ -187,7 +187,7 @@ As a user, I want to log symptoms for a specific day of my cycle.
 
 <hr />
 
-<h4>4.5 Enabling Cloud Backup</h4>
+<h3>4.5 Enabling Cloud Backup</h3>
 
 <p><strong>User Story:</strong><br />
 As a user, I want to enable encrypted cloud backups to avoid losing my data.
@@ -214,7 +214,7 @@ As a user, I want to enable encrypted cloud backups to avoid losing my data.
 
 <hr />
 
-<h4>4.6 Data Recovery on a New Device</h4>
+<h3>4.6 Data Recovery on a New Device</h3>
 
 <p><strong>User Story:</strong><br />
 As a user, I want to restore my data on a new device so I can continue using the app.
@@ -236,7 +236,7 @@ As a user, I want to restore my data on a new device so I can continue using the
 
 <hr />
 
-<h4>4.7 Data Deletion</h4>
+<h3>4.7 Data Deletion</h3>
 
 <p><strong>User Story:</strong><br />
 As a user, I want to delete all my data to ensure it cannot be accessed by third parties.
@@ -258,7 +258,7 @@ As a user, I want to delete all my data to ensure it cannot be accessed by third
 
 <hr />
 
-<h3>5. Functional Requirements (Summary)</h3>
+<h2>5. Functional Requirements (Summary)</h2>
 <ul>
   <li>Local data storage</li>
   <li>Optional cloud backups</li>
@@ -269,30 +269,30 @@ As a user, I want to delete all my data to ensure it cannot be accessed by third
 
 <hr />
 
-<h3>6. Non-Functional Requirements</h3>
+<h2>6. Non-Functional Requirements</h2>
 
-<h4>Performance</h4>
+<h3>Performance</h3>
 <p>All user actions must complete within ≤ 1 second.</p>
 
-<h4>Security</h4>
+<h3>Security</h3>
 <ul>
   <li>Client-side encryption</li>
   <li>No server access to user data</li>
 </ul>
 
-<h4>Reliability</h4>
+<h3>Reliability</h3>
 <ul>
   <li>No data loss when switching devices</li>
 </ul>
 
-<h4>Accessibility</h4>
+<h3>Accessibility</h3>
 <ul>
   <li>Readable fonts</li>
 </ul>
 
 <hr />
 
-<h3>7. Compliance</h3>
+<h2>7. Compliance</h2>
 <ul>
   <li>GDPR compliance</li>
   <li>Privacy by Design / Privacy by Default</li>
@@ -301,7 +301,7 @@ As a user, I want to delete all my data to ensure it cannot be accessed by third
 
 <hr />
 
-<h3>8. Success Metrics (MVP)</h3>
+<h2>8. Success Metrics (MVP)</h2>
 <ul>
   <li>Application published on Google Play</li>
   <li>All user journeys work without errors</li>
